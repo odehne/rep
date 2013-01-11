@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mediamanager 2013 SPA</title>
+    <link href="Content/dialog-mng.css" rel="stylesheet" />
+    <link href="Content/app.css" rel="stylesheet" />
+    <script src="Scripts/dragdrop.js"></script>
+    <script src="Scripts/jquery-1.8.3.js"></script>
+    <script src="Scripts/dialog-mng.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/types.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/jQuery.tmpl.js"></script>
+    <script src="Scripts/jquery.cookie.js"></script>
+    <script src="Scripts/jquery-css-transform.js"></script>
+    <script src="Scripts/jquery-animate-css-rotate-scale.js"></script>
+</head>
+    <body onload="Init()">
+        <div id="loggedInUser"><a href="#" onmouseup="logout();"></a></div>
+        <div id="ModelContainer">
+        </div>
+        <div id="loadingOverlay">
+            <div id="loadingDiv">
+                <label style="font-size:48pt;">Loading.</label><br/>
+                <img src='content/images/ajax-loader.gif' id='loaderImage' alt='loader image'/>
+            </div>
+        </div>
+    </body>
+</html>

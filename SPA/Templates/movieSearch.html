@@ -1,0 +1,75 @@
+﻿<style>
+    #genreList {
+        width: 300px;
+    }
+    #dialog-message {
+        text-align: left;
+        background-color: #004ac3;
+    }
+    #dialog-box {
+        background-color: #004ac3;
+        width: 500px;
+    }
+    #listContainer {
+        margin-top: 15px;
+        width: 500px;
+        text-align: center; 
+    }
+    #movieList {
+        width: 350px;
+    }
+
+      a.AlphabetButton {
+        font-size: 12pt;
+        color: #f0f0f0;
+        text-decoration:none;
+        margin-left: 10px;
+        margin-top:5px;
+        margin-right: 5px;
+        margin-bottom:5px;
+    }
+
+</style>
+
+<h1>Filme.</h1>
+<h2>Die Liste aller Filme ist recht lang, daher schränke die Suche erst durch den Anfangsbuchstaben ein, dann wähle den Titel aus der Liste.</h2>
+
+<div id="alphabet">
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('a', 'movieList');">a</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('b', 'movieList');">b</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('c', 'movieList');">c</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('d', 'movieList');">d</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('e', 'movieList');">e</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('f', 'movieList');">f</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('g', 'movieList');">g</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('h', 'movieList');">h</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('i', 'movieList');">i</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('j', 'movieList');">j</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('k', 'movieList');">k</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('l', 'movieList');">l</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('m', 'movieList');">m</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('n', 'movieList');">n</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('o', 'movieList');">o</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('p', 'movieList');">p</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('q', 'movieList');">q</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('r', 'movieList');">r</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('s', 'movieList');">s</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('t', 'movieList');">t</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('u', 'movieList');">u</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('v', 'movieList');">v</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('w', 'movieList');">w</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('x', 'movieList');">x</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('y', 'movieList');">y</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('z', 'movieList');">z</a>
+</div>
+<div id="listContainer">
+    <select id="movieList" size="15">
+    </select>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("movieList").onchange = function (e) {
+        m.loadMovieById(this.value);
+        $('#dialog-overlay, #dialog-box').remove();
+    };
+</script> 

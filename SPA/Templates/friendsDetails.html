@@ -1,0 +1,42 @@
+﻿<style>
+    #genreList {
+        width: 300px;
+    }
+    #dialog-message {
+        text-align: left;
+        background-color: #26cd2d;
+    }
+    #dialog-box {
+        background-color: #26cd2d;
+        width: 500px;
+    }
+    #listContainer {
+        width: 500px;
+        text-align: center; 
+    }
+    #friendsList {
+        width: 350px;
+    }
+</style>
+
+<h1>Freunde.</h1>
+<h2>Um die Filme aller Freunde zu sehen, klicke auf ihre Namen in der Liste.</h2>
+
+<div id="listContainer">
+<select value="${FriendId}" id="friendsList" size="18">
+    {{tmpl(friends) "#detailsTemplate"}}                            
+</select>  
+    
+</div>
+
+<script id="detailsTemplate" type="text/x-jquery-tmpl">
+    <option value="${ID}">${Username}</option>
+</script>
+
+<script type="text/javascript">
+    document.getElementById("friendsList").onchange = function (e) {
+        m.loadMoviesOfaFriend(this.value);
+        $('#dialog-overlay, #dialog-box').hide();
+        $('#dialog-overlay, #dialog-box').remove();
+    };
+</script>    

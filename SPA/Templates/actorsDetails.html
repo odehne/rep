@@ -1,0 +1,78 @@
+﻿<style>
+    #genreList {
+        width: 300px;
+    }
+    #dialog-message {
+        text-align: left;
+        background-color: #00aeb2;
+    }
+    #dialog-box {
+        background-color: #00aeb2;
+        width: 500px;
+    }
+    #listContainer {
+        margin-top: 15px;
+        width: 500px;
+        text-align: center; 
+    }
+    #actorsList {
+        width: 350px;
+    }
+
+      a.AlphabetButton {
+        font-size: 12pt;
+        color: #f0f0f0;
+        text-decoration:none;
+        margin-left: 10px;
+        margin-top:5px;
+        margin-right: 5px;
+        margin-bottom:5px;
+    }
+
+</style>
+
+
+
+<h1>Cast.</h1>
+<h2>Um die Filme bestimmter Schauspieler oder Regisseure zu sehen, schränke die Suche erst durch den Anfangsbuchstaben ein, dann wähle den Namen aus der Liste.</h2>
+
+<div id="alphabet">
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('a', 'actorsList');">a</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('b', 'actorsList');">b</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('c', 'actorsList');">c</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('d', 'actorsList');">d</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('e', 'actorsList');">e</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('f', 'actorsList');">f</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('g', 'actorsList');">g</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('h', 'actorsList');">h</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('i', 'actorsList');">i</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('j', 'actorsList');">j</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('k', 'actorsList');">k</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('l', 'actorsList');">l</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('m', 'actorsList');">m</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('n', 'actorsList');">n</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('o', 'actorsList');">o</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('p', 'actorsList');">p</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('q', 'actorsList');">q</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('r', 'actorsList');">r</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('s', 'actorsList');">s</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('t', 'actorsList');">t</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('u', 'actorsList');">u</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('v', 'actorsList');">v</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('w', 'actorsList');">w</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('x', 'actorsList');">x</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('y', 'actorsList');">y</a>
+    <a href="#"  class="AlphabetButton" onmouseup="m.loadActors('z', 'actorsList');">z</a>
+</div>
+<div id="listContainer">
+    <select id="actorsList" size="15">
+    </select>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("actorsList").onchange = function (e) {
+        m.loadMoviesByActor(this.value);
+ //       $('#dialog-overlay, #dialog-box').hide();
+        $('#dialog-overlay, #dialog-box').remove();
+    };
+</script> 

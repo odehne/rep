@@ -1,0 +1,32 @@
+﻿body {
+      font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+#ModelContainer {
+    position: absolute;
+    width: 800px;
+    height: 1000px; 
+}
+
+.round-corner-div {
+    position: absolute;
+    border: #4d5555 2px solid;
+    background-origin: border-box;
+    border-radius: 5px 5px 5px 5px;
+    width: 110px;
+    height: 155px;
+    top: 0px;
+    left: 0px;
+    text-align:left;
+    vertical-align: bottom;
+    color: white;
+    font-size: 20pt;   
+    padding-top: 2px; 
+    background-color: #333333;
+    display: inline;
+}
+
+input[type='text'], input[type='email'], input[type='search'],
+input[type='password'], textarea
+{
+        -webkit-user-select: text; 
+}

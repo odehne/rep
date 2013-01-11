@@ -1,0 +1,221 @@
+﻿/* Z-index of #mask must lower than #boxes .window */
+#mask {
+  position:absolute;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+
+    h1 {
+         font-size: 24pt; 
+    }
+
+    h2 {
+        font-size: 12pt;
+        font-weight:normal; 
+    }
+    h1, h2 {
+        margin: 10px;
+        color: #f0f0f0;
+        font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    }
+
+    #loadingDiv {
+        text-align: center;
+        margin-top: 300px;
+    }
+   
+#boxes .window {
+  position:fixed;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+ 
+#dialog-overlay, #loadingOverlay{
+ 
+    /* set it to fill the whil screen */
+    width:100%; 
+    height:100%;
+    color: #f0f0f0;
+     
+    /* transparency for different browsers */
+    filter:alpha(opacity=70); 
+    -moz-opacity:0.7; 
+    -khtml-opacity: 0.7; 
+    opacity: 0.7; 
+    background:#000; 
+ 
+    /* make sure it appear behind the dialog box but above everything else */
+    position:absolute; 
+    top:0; left:0; 
+    z-index:3000; 
+ 
+    /* hide it by default */
+    display:none;
+}
+
+
+
+#dialog-box {
+     
+    /* css3 drop shadow */
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+     
+    /* css3 border radius */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+     
+    background:#b4b4b4;
+    /* styling of the dialog box, i have a fixed dimension for this demo */
+    width:700px;
+    height: 520px;
+
+    /* make sure it has the highest z-index */
+    position:absolute; 
+    z-index:5000; 
+ 
+    /* hide it by default */
+    display:none;
+}
+ 
+#dialog-box .dialog-content {
+    /* style the content */
+    text-align:left; 
+    margin:13px;
+    font-family:arial;
+    font-size:11px; 
+}
+ 
+a.button {
+    /* styles for button */
+    margin:10px auto 0 auto;
+    text-align:center;
+    display: block;
+    width:60px;
+    padding: 5px 10px 6px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+     
+    /* button color */
+    background-color: #e33100;
+     
+    /* css3 implementation :) */
+    /* rounded corner */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+     
+    /* drop shadow */
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+     
+    /* text shaow */
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+     
+}
+
+#cmd_Actors {
+    background: #0fdbcf; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0fdbcf', endColorstr='#00aea2'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#0fdbcf), to(#00aea2)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #0fdbcf,  #00aea2); /* for IE 10 */
+    background: -ms-linear-gradient(top, #0fdbcf,  #00aea2);
+}
+
+#cmd_Genres {
+    background: #882bce; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#882bce', endColorstr='#6606b2'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#882bce), to(#6606b2)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #882bce,  #6606b2); /* for firefox 3.6+ */
+    background: -ms-linear-gradient(top,  #882bce,  #6606b2); /* for IE 10 */
+}
+
+#cmd_Friends {
+    background: #26dd2d; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#26dd2d', endColorstr='#23a729'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#26dd2d), to(#23a729)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #26dd2d,  #23a729); /* for firefox 3.6+ */
+    background: -ms-linear-gradient(top,  #26dd2d,  #23a729); /* for IE 10 */
+}
+
+#cmd_Movies {
+    background: #0a5dc5; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0a5dc5', endColorstr='#004ac3'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#0a5dc5), to(#004ac3)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #0a5dc5,  #004ac3); /* for firefox 3.6+ */
+    background: -ms-linear-gradient(top,  #0a5dc5,  #004ac3); /* for IE 10 */
+}
+
+#cmd_Refresh {
+    background: #707070; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#707070', endColorstr='#4d4d4d'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#707070), to(#4d4d4d)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #707070,  #4d4d4d); /* for firefox 3.6+ */
+    background: -ms-linear-gradient(top,  #707070,  #4d4d4d); /* for IE 10 */
+}
+
+#cmd_Latest {
+    background: #f965e3; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f965e3', endColorstr='#af339d'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#f965e3), to(#af339d)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #f965e3,  #af339d); /* for firefox 3.6+ */
+    background: -ms-linear-gradient(top,  #f965e3,  #af339d); /* for IE 10 */
+}
+
+#cmd_AddMovies {
+    background: #f31e1e; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f31e1e', endColorstr='#C51d1d'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#f31e1e), to(#c51d1d)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #f31e1e,  #c51d1d); /* for firefox 3.6+ */
+    background: -ms-linear-gradient(top,  #f31e1e,  #c51d1d); /* for IE 10 */
+}
+
+#cmd_Friends, #cmd_Genres, #cmd_Actors, #cmd_AddMovies, #cmd_Movies, #cmd_Refresh, #cmd_Latest  {
+    padding-left: 7px;
+}
+
+ 
+a.button:hover {
+    background-color: #c33100;  
+}
+ 
+/* extra styling */
+#dialog-box .dialog-content p {
+    font-weight:700; margin:0;
+}
+ 
+#dialog-box .dialog-content ul {
+    margin:10px 0 10px 20px; 
+    padding:0; 
+    height:50px;
+}
+
+
+#detailsContainer {
+    width: 670px;
+    height: 470px;
+    background-color: #4d4d4d;
+    color: #f0f0f0;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;  
+}
+#largeThumb {
+    float: left;
+    margin-right: 7px;
+    height:470px; 
+    width:330px;
+}
+#details, #register, #login {
+    padding-top: 5px;
+    padding-left: 340px; 
+    padding-right: 10px; 
+
+    font-size: 12px;
+}

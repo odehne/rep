@@ -1,0 +1,39 @@
+﻿<style>
+    h1 { margin-left: 0px;}
+    a.actor {
+        font-size: 12pt;
+        color: #f0f0f0;
+        text-decoration:none;
+    }
+
+    a.actor:hover, a.actor:visited {
+        color: #cacaca;
+    } 
+
+</style>
+
+<script id="detailsTemplate" type="text/x-jquery-tmpl">
+    <div id="detailsContainer">
+        <div id="largeThumb">
+            <img src="${CoverUrlMediaManager}&size=large" height="470" width="330" alt="${Title}"/>
+        </div>
+        <div id="details">
+            <h1>${Title}</h1>
+            <p><b>mit </b><a href="#" class="actor" onmouseup="m.loadMoviesByActor(${Actor1ID});$('#dialog-overlay, #dialog-box').remove();">${Actor1Name}</a>, 
+                <a href="#" class="actor"  onmouseup="m.loadMoviesByActor(${Actor2ID});$('#dialog-overlay, #dialog-box').remove();">${Actor2Name}</a>, 
+                <a href="#" class="actor"  onmouseup="m.loadMoviesByActor(${Actor3ID});$('#dialog-overlay, #dialog-box').remove();">${Actor3Name}</a>
+                <br />
+                <br />
+                <b>Regie</b> ${DirectorName}<br/>
+                <b>Published</b> ${PublishDate}<br/>
+                <b>Eigentümer</b> ${OwnerName}</p>
+            <b>Verliehen an</b> ${BorrowedByName}</p>
+            <br />
+            <p>${Description} </p>
+            <a href="#" class="button" onmouseup="" style="width:100px">Zurück erhalten</a>
+            <a href="#" class="button" onmouseup="m.borrowMovie(${ID});" style="width:100px">Ausleihen</a>
+        </div>
+  
+    </div>
+    
+</script>

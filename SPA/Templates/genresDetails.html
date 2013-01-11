@@ -1,0 +1,39 @@
+﻿<style>
+    #genreList {
+        width: 300px;
+    }
+    #dialog-message {
+        text-align: left;
+        background-color: #6616b2;
+    }
+    #dialog-box {
+        background-color: #6616b2;
+        width: 500px;
+    }
+    #listContainer {
+        width: 500px;
+        text-align: center; 
+    }
+</style>
+
+<h1>Genre.</h1>
+<h2>Bitte wähle ein Genre aus der Liste aus, dann aktualisiert sich die Hauptansicht und Filme passend zu diesem Genre werden geladen.</h2>
+
+<div id="listContainer">
+<select value="${GenreId}" id="genreList" size="18">
+    {{tmpl(genres) "#detailsTemplate"}}                            
+</select>  
+    
+</div>
+
+<script id="detailsTemplate" type="text/x-jquery-tmpl">
+    <option value="${ID}">${Name}</option>
+</script>
+
+<script type="text/javascript">
+    document.getElementById("genreList").onchange = function(e) {
+        m.loadMoviesByGenre(this.value);
+        $('#dialog-overlay, #dialog-box').hide();
+        $('#dialog-overlay, #dialog-box').remove();
+    };
+</script>    

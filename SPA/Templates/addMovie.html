@@ -1,0 +1,43 @@
+﻿<style>
+    #dialog-message {
+        text-align: left;
+        background-color: #c51d1d;
+    }
+    #dialog-box {
+        background-color: #c51d1d;
+        width: 700px;
+    }
+    #listContainer {
+        width: 500px;
+        text-align: center; 
+    }
+
+    #resultTable{
+        visibility: hidden;
+    }
+</style>
+<div id="detailsTemplate">
+    <div id="detailsContainer">
+        <div id="largeThumb">
+        </div>
+        <div id="details">
+            <h1>Film hinzufügen.</h1>
+            <h2>Die einfachste Möglichkeit einen neuen Film hinzuzufügen ist den Barcode auf der Verpackung zu scannen. Du musst angemeldt sein, um Filme hinzufügen zu können.</h2>
+            <fieldset>
+                <table>
+                    <tr>
+                        <td>EAN Strickcode</td>
+                        <td><input type="text" size="25" maxlength="40" name="txtEan" id="txtEan"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><div id="addMovieErrorMessage"></div></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <a href="#" class="button" id="searchButton" onmouseup="m.addMovie()" style="width:100px">Suche</a>
+        </div>
+        <div id="resultTable">
+            
+        </div>
+    </div>
+</div>
