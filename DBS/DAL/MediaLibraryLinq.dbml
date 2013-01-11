@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="movies" Class="MediaLibraryLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=odmobil6;Initial Catalog=movies;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="moviesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblCovers" Member="tblCovers">
+    <Type Name="tblCover">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Large" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblGenres" Member="tblGenres">
+    <Type Name="tblGenre">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="tblGenre_tblItem" Member="tblItems" ThisKey="ID" OtherKey="GenreID" Type="tblItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMediaFormat" Member="tblMediaFormats">
+    <Type Name="tblMediaFormat">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="tblMediaFormat_tblItem" Member="tblItems" ThisKey="ID" OtherKey="MediaFormatID" Type="tblItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMediaType" Member="tblMediaTypes">
+    <Type Name="tblMediaType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="tblMediaType_tblItem" Member="tblItems" ThisKey="ID" OtherKey="MediaTypeID" Type="tblItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblParticipants" Member="tblParticipants">
+    <Type Name="tblParticipant">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParticipantTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="tblParticipant_tblItem" Member="tblItems" ThisKey="ID" OtherKey="Actor1ID" Type="tblItem" />
+      <Association Name="tblParticipant_tblItem1" Member="tblItems1" ThisKey="ID" OtherKey="Actor2ID" Type="tblItem" />
+      <Association Name="tblParticipant_tblItem2" Member="tblItems2" ThisKey="ID" OtherKey="Actor3ID" Type="tblItem" />
+      <Association Name="tblParticipant_tblItem3" Member="tblItems3" ThisKey="ID" OtherKey="DirectorID" Type="tblItem" />
+      <Association Name="tblParticipant_tblItem4" Member="tblItems4" ThisKey="ID" OtherKey="AuthorID" Type="tblItem" />
+      <Association Name="tblParticipantType_tblParticipant" Member="tblParticipantType" ThisKey="ParticipantTypeID" OtherKey="ID" Type="tblParticipantType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblParticipantType" Member="tblParticipantTypes">
+    <Type Name="tblParticipantType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="tblParticipantType_tblParticipant" Member="tblParticipants" ThisKey="ID" OtherKey="ParticipantTypeID" Type="tblParticipant" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblItems" Member="tblItems">
+    <Type Name="tblItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MediaTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MediaFormatID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GenreID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Actor1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Actor2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EAN" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Actor3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AmazonSalesRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AudienceRank" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BorrowedByID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ASIN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SmallImageUrl" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MediumImageUrl" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LargeImageUrl" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BorrowedSince" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BorrowCount" Type="System.Int32" DbType="Int Not Null" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="datetime Not NULL" CanBeNull="false" />
+      <Column Name="GenreIDs" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="tblItem_tblImage" Member="tblImages" ThisKey="ID" OtherKey="ItemID" Type="tblImage" />
+      <Association Name="tblItem_tblRating" Member="tblRatings" ThisKey="ID" OtherKey="ItemID" Type="tblRating" />
+      <Association Name="tblGenre_tblItem" Member="tblGenre" ThisKey="GenreID" OtherKey="ID" Type="tblGenre" IsForeignKey="true" />
+      <Association Name="tblMediaFormat_tblItem" Member="tblMediaFormat" ThisKey="MediaFormatID" OtherKey="ID" Type="tblMediaFormat" IsForeignKey="true" />
+      <Association Name="tblMediaType_tblItem" Member="tblMediaType" ThisKey="MediaTypeID" OtherKey="ID" Type="tblMediaType" IsForeignKey="true" />
+      <Association Name="tblParticipant_tblItem" Member="tblParticipant" ThisKey="Actor1ID" OtherKey="ID" Type="tblParticipant" IsForeignKey="true" />
+      <Association Name="tblParticipant_tblItem1" Member="tblParticipant1" ThisKey="Actor2ID" OtherKey="ID" Type="tblParticipant" IsForeignKey="true" />
+      <Association Name="tblParticipant_tblItem2" Member="tblParticipant2" ThisKey="Actor3ID" OtherKey="ID" Type="tblParticipant" IsForeignKey="true" />
+      <Association Name="tblParticipant_tblItem3" Member="tblParticipant3" ThisKey="DirectorID" OtherKey="ID" Type="tblParticipant" IsForeignKey="true" />
+      <Association Name="tblUser_tblItem" Member="tblUser" ThisKey="OwnerID" OtherKey="ID" Type="tblUser" IsForeignKey="true" />
+      <Association Name="tblUser_tblItem1" Member="tblUser1" ThisKey="BorrowedByID" OtherKey="ID" Type="tblUser" IsForeignKey="true" />
+      <Association Name="tblParticipant_tblItem4" Member="tblParticipant4" ThisKey="AuthorID" OtherKey="ID" Type="tblParticipant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblUsers" Member="tblUsers">
+    <Type Name="tblUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="false" />
+      <Column Name="Fon" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
+      <Column Name="IsOnLine" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLockedOutDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FailureCount" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="tblUser_tblItem" Member="tblItems" ThisKey="ID" OtherKey="OwnerID" Type="tblItem" />
+      <Association Name="tblUser_tblItem1" Member="tblItems1" ThisKey="ID" OtherKey="BorrowedByID" Type="tblItem" />
+      <Association Name="tblUser_tblUsersInRole" Member="tblUsersInRoles" ThisKey="Username" OtherKey="UserName" Type="tblUsersInRole" />
+      <Association Name="tblUser_tblRating" Member="tblRatings" ThisKey="ID" OtherKey="UserID" Type="tblRating" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblUsersInRoles" Member="tblUsersInRoles">
+    <Type Name="tblUsersInRole">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="tblRole_tblUsersInRole" Member="tblRole" ThisKey="RoleName" OtherKey="Rolename" Type="tblRole" IsForeignKey="true" />
+      <Association Name="tblUser_tblUsersInRole" Member="tblUser" ThisKey="UserName" OtherKey="Username" Type="tblUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblRoles" Member="tblRoles">
+    <Type Name="tblRole">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Rolename" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="tblRole_tblUsersInRole" Member="tblUsersInRoles" ThisKey="Rolename" OtherKey="RoleName" Type="tblUsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblImages" Member="tblImages">
+    <Type Name="tblImage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SmallImage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MediumImage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LargeImage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="tblItem_tblImage" Member="tblItem" ThisKey="ItemID" OtherKey="ID" Type="tblItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblRatings" Member="tblRatings">
+    <Type Name="tblRating">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Rating" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="tblItem_tblRating" Member="tblItem" ThisKey="ItemID" OtherKey="ID" Type="tblItem" IsForeignKey="true" />
+      <Association Name="tblUser_tblRating" Member="tblUser" ThisKey="UserID" OtherKey="ID" Type="tblUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSettings" Member="tblSettings">
+    <Type Name="tblSetting">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(2048)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

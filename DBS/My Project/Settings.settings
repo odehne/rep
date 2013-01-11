@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="MediaManager2010_Amazon_AWSECommerceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ecs.amazonaws.de/onca/soap?Service=AWSECommerceService</Value>
+    </Setting>
+    <Setting Name="BaseURI" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://odmobil6/MediaManager2010</Value>
+    </Setting>
+    <Setting Name="SmtpServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="SmtpUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SmtpPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SmtpReplyToAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">no-reply@mediamanager.de</Value>
+    </Setting>
+    <Setting Name="AWS_Access_Key" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AKIAJGLLZFOW44IYKYHA</Value>
+    </Setting>
+    <Setting Name="AWS_Secret_Key" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mBx26Oy2vrwTaiqYIKiHFsyYjjVZOV3ty8U+QDdX</Value>
+    </Setting>
+    <Setting Name="AWS_Associate_Tag" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">odehnewordpre-20</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
