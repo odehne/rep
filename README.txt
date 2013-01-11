@@ -16,3 +16,5 @@ To create the database simply run the generate-movies.sql script in the \DB subf
 Amazon webservices 
 The service component can utilize a web API by Amazon to retrieve information about movies you want to persist. To get this running you need to provide AWS crendentials. Those credentials must be stored in the tblSettings in the movies database.
 
+Have fun,
+Oliver
