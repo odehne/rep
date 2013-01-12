@@ -376,14 +376,13 @@ Public Class BLLItems
                 End Try
 
                 'Jetzt noch die Emails versenden
-                Dim em As New EmailSender
-                Dim Lender As tblUser = uBll.GetTblUserByID(movie.BorrowedByID)
+                 Dim Lender As tblUser = uBll.GetTblUserByID(movie.BorrowedByID)
                 Dim Owner As tblUser = uBll.GetTblUserByID(movie.OwnerID)
                 Dim RequestBody As String = CreateBorrowRequestBody(Owner.Username, Lender.Username, movie)
                 Dim NotifyBody As String = CreateLenderNotificationBody(Owner.Username, Lender.Username, movie)
 
-                em.SendEmail("Media Community Leihanfrage", RequestBody, Owner.Email)
-                em.SendEmail("Media Community Leihanfrage", NotifyBody, Lender.Email)
+                EmailSender.SendEmail("Movie Manager Leihanfrage", RequestBody, Owner.Email)
+                EmailSender.SendEmail("Movie Manager Leihanfrage", NotifyBody, Lender.Email)
 
             End If
 
@@ -634,7 +633,7 @@ Public Class BLLItems
                 .BorrowedSince = r.BorrowedSince
             End If
 
-            .CoverUrlMediaManager = My.Settings.BaseURI & "/imagehandler?ID=" & r.ID
+            .CoverUrlMediaManager = BLLSettings.Settings.BaseUrl & "/imagehandler?ID=" & r.ID
             If Not String.IsNullOrEmpty(r.Description) Then
                 .Description = Tools.RemoveHTMLTags(r.Description)
                 If .Description.Length > 400 Then .Description = .Description.Substring(0, 400) & "..."

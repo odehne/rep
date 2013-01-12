@@ -66,14 +66,4 @@ Public Class Tools
 
     End Function
 
-    Public Shared Function GetSetting(ByVal SettingName As String) As String
-
-        If Not ConfigurationManager.AppSettings(SettingName) Is Nothing Then
-            Return ConfigurationManager.AppSettings(SettingName)
-        Else
-            Return My.Settings.BaseURI
-        End If
-
-    End Function
-
 End Class

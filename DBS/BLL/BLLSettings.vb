@@ -10,7 +10,7 @@
         Public Property SmtpServer As String
         Public Property SmtpUser As String
         Public Property SmtpPassword As String
-
+        Public Property SmtpReplyToAddress As String
     End Class
 
     Public Sub New()
@@ -57,7 +57,7 @@
         _settings.SmtpServer = GetValue("SmtpServer")
         _settings.SmtpUser = GetValue("SmtpUser")
         _settings.SmtpPassword = GetValue("SmtpPassword")
-
+        _settings.SmtpReplyToAddress = GetValue("SmtpReplyToAddress")
     End Sub
 
     Public Shared Function GetValue(name As String) As String
