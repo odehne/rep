@@ -144,7 +144,8 @@ function touchHandler(event) {
 			    if (!moved_touch) {
 			        spinIt(event.target);
 			        selectPopup(event.target);
-				};
+			        event.stopPropagation();
+			    };
 			},100);
 		}
 		

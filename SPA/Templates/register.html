@@ -1,23 +1,26 @@
 ﻿ <h1>Registrieren.</h1>
-            <h2>Bitte registriere dich, damit du Filme anderen zur Verfügung stellen und selbst welche leihen kannst.</h2>
-            <fieldset>
-                <table>
-                    <tr>
-                        <td>Benutzername</td>
-                        <td><input type="text" size="25" maxlength="40" name="username"></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><input type="email" size="25" maxlength="40" name="email"></td>
-                    </tr>
-                    <tr>
-                        <td>Passwort</td>
-                        <td><input type="password" size="25" maxlength="40" name="password"></td>
-                    </tr>
-                    <tr>
-                        <td>Passwort Bestätigung</td>
-                        <td><input type="password" size="25" maxlength="40" name="passwordConfirm"></td>
-                    </tr>
-                </table>
-            </fieldset>
-            <a href="#" class="button" onmouseup="" style="width:100px">Registrieren</a>
+<h2>Bitte registriere dich, damit du Filme anderen zur Verfügung stellen und selbst welche leihen kannst.</h2>
+<fieldset>
+    <table>
+        <tr>
+            <td>Benutzername</td>
+            <td><input type="text" size="25" maxlength="40" id="txtRegisterUsername"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" size="25" maxlength="40" id="txtRegisterEmail"></td>
+        </tr>
+        <tr>
+            <td>Passwort</td>
+            <td><input type="password" size="25" maxlength="40" id="txtRegisterPassword"></td>
+        </tr>
+        <tr>
+            <td>Passwort Bestätigung</td>
+            <td><input type="password" size="25" maxlength="40" id="txtPasswordConfirm"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><div id="registerErrorMessage"></div></td>
+        </tr>
+    </table>
+</fieldset>
+<a href="#" class="button" onmouseup="dlg.registerNewUser()" style="width:100px">Registrieren</a>

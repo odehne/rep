@@ -1,4 +1,5 @@
 Imports Microsoft.VisualBasic
+Imports System.Web.Script.Serialization
 
 Public Class Tools
 
@@ -66,4 +67,10 @@ Public Class Tools
 
     End Function
 
+
+
+    Public Shared Function Tojson(ByVal obj As Object) As String
+        Dim serializer As New JavaScriptSerializer()
+        Return (serializer.Serialize(obj))
+    End Function
 End Class

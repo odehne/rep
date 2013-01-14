@@ -1,4 +1,4 @@
-﻿var DialogManager = function() {
+﻿ var DialogManager = function() {
     //TODO: Sollte man mal schick machen ...
     this.placeDialogCookie = function(dlgName) {
         if (!$.cookie(dlgName)) {
@@ -36,9 +36,9 @@
         this.popup("Templates/forgotMyPassword.html");
     },
     this.popupRegister = function(ctrlToHide, parent) {
-        ctrlToHide.hide();
+        ctrlToHide.remove();
         parent.append("<div id='register' />");
-        $("#login").load("Templates/register.html", function() {
+        $("#register").load("Templates/register.html", function() {
             $("#errorMessage").hide();
         });
     },
@@ -47,6 +47,18 @@
         $.cookie("movie-user-email", null, -1);
         $.cookie("movie-user-id", null, -1);
         m.showLoggedInUser();
+    },
+    this.registerNewUser = function() {
+        $("#registerErrorMessage").hide();
+        $.post(m.serviceUrl + "friends", { username: $("#txtRegisterUsername").val(), password: $("#txtRegisterPassword").val(), email: $("#txtRegisterEmail").val() }, function (data) {
+           if (data != "OK") {
+               $("#registerErrorMessage").innerHTML=data;
+               $("#registerErrorMessage").show();
+           } else {
+               alert("Willkommen, du bist jetzt registriert und kannst dich anmelden.");
+               dlg.showLogin($("#register"), $('#detailsContainer'));
+           }
+        });
     },
     this.showLogin = function(ctrlToHide, parent) {
         ctrlToHide.hide();

@@ -28,11 +28,11 @@ Public Class Genres
         If id > 0 Then
             Dim genre = New BLLGenre().GetGenreByID(id)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Items.ToJson(genre))
+            context.Response.Write(Tools.Tojson(genre))
         Else
             Dim genres = New BLLGenre().GetGenres
             context.Response.ContentType = "application/json"
-            context.Response.Write(Items.ToJson(genres))
+            context.Response.Write(Tools.Tojson(genres))
         End If
 
         context.Response.Flush()

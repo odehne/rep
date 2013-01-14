@@ -6,11 +6,9 @@
     this.drawMovies = function() {
         $("#ModelContainer").innerHTML = "";
         for (var i = 0; i < this.movies.length; i++) {
-            if ($("#mb" + i).length == 0) {
                 $("#ModelContainer").append("<div id='mb" + i + "' class='round-corner-div' onMouseDown='dragstart(this)'></div>");
                 this.placeObjectOnCanvas($("#mb" + i));
                 $("#mb" + i).css("background-image", "url(" + this.movies[i].CoverUrlMediaManager + ")");
-            }
         };
     },
     this.drawCommands = function() {

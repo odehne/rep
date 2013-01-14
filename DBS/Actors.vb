@@ -28,11 +28,11 @@ Public Class Actors
         If Not String.IsNullOrEmpty(letter) Then
             Dim actors = New BLLParticipants().GetParticipantsBeginningWith(letter)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Items.ToJson(actors))
+            context.Response.Write(Tools.Tojson(actors))
         Else
             Dim cast = New BLLParticipants().GetData()
             context.Response.ContentType = "application/json"
-            context.Response.Write(Items.ToJson(cast))
+            context.Response.Write(Tools.Tojson(cast))
         End If
 
         context.Response.Flush()
