@@ -16,6 +16,8 @@ var posy = 0;
 var posx_init = 0;
 var posy_init = 0;
 
+var lastTargetId = null;
+
 function dragDropInit() {
     // Initialisierung der Überwachung der Events
     document.onmousemove = drag;
@@ -40,54 +42,54 @@ function dragstop() {
     if ((posy > posy_init + 3) || (posy < posy_init - 3)) {
         bewegt = true;
     };
-	
-	if (!bewegt) {
-	    spinIt(dragObj);
-	    selectPopup(dragObj);
-	}
+
+    if (!bewegt) {
+        spinIt(dragObj);
+        selectPopup(dragObj);
+    }
     dragObj = null;
 }
 
 function spinIt(dragObj) {
     var prefix = dragObj.id.substring(0, 2);
-    
-    if ((prefix == "mb") || (prefix=="cm")){
+
+    if ((prefix == "mb") || (prefix == "cm")) {
         $("#" + dragObj.id).animate({ rotate: '360deg' }, 200);
     }
 }
 
 function selectPopup(dragObj) {
 
-    setTimeout(function() {
+    setTimeout(function () {
 
         if (dragObj.id.substring(0, 2) == "mb") {
             m.showDetails(dragObj.id);
         } else {
             switch (dragObj.id) {
-            case "cmd_Refresh":
-                m.loadSomeMovies();
-                break;
-            case "cmd_Latest":
-                m.loadLatestMovies();
-                break;
-            case "cmd_Genres":
-                m.showGenreSelector();
-                break;
-            case "cmd_Movies":
-                dlg.popupMovieSelector();
-                break;
-            case "cmd_Friends":
-                m.showFriendsSelector();
-                break;
-            case "cmd_Actors":
-                dlg.popupActorSelector();
-                break;
-            case "cmd_AddMovies":
-                dlg.popupAddMovies();
-                break;
-            default:
-                //              alert("not supported " + dragObj.id);
-                break;
+                case "cmd_Refresh":
+                    m.loadSomeMovies();
+                    break;
+                case "cmd_Latest":
+                    m.loadLatestMovies();
+                    break;
+                case "cmd_Genres":
+                    m.showGenreSelector();
+                    break;
+                case "cmd_Movies":
+                    dlg.popupMovieSelector();
+                    break;
+                case "cmd_Friends":
+                    m.showFriendsSelector();
+                    break;
+                case "cmd_Actors":
+                    dlg.popupActorSelector();
+                    break;
+                case "cmd_AddMovies":
+                    dlg.popupAddMovies();
+                    break;
+                default:
+                    //              alert("not supported " + dragObj.id);
+                    break;
             }
         }
     }, 200);
@@ -101,8 +103,8 @@ function drag(ereignis) {
     };
     posx = document.all ? window.event.clientX : ereignis.pageX;
     posy = document.all ? window.event.clientY : ereignis.pageY;
-    
-	if (dragObj != null) {
+
+    if (dragObj != null) {
         dragObj.style.left = (posx - dragx) + "px";
         dragObj.style.top = (posy - dragy) + "px";
     }
@@ -118,16 +120,16 @@ function touchHandler(event) {
              type = "";
 
         switch (event.type) {
-            case "touchstart": 
-				moved_touch=false;
-				type = "mousedown"; 
-				break;
-            case "touchmove": 
-				moved_touch=true;
-				type = "mousemove"; break;
-            case "touchend": 
-				type = "mouseup"; 
-				break;
+            case "touchstart":
+                moved_touch = false;
+                type = "mousedown";
+                break;
+            case "touchmove":
+                moved_touch = true;
+                type = "mousemove"; break;
+            case "touchend":
+                type = "mouseup";
+                break;
             default: return;
         }
         var simulatedEvent = document.createEvent("MouseEvent");
@@ -138,18 +140,20 @@ function touchHandler(event) {
 
         posx = document.all ? window.event.clientX : event.pageX;
         posy = document.all ? window.event.clientY : event.pageY;
-		
-		if(type="mouseup"){
-			clickTimeout = setTimeout(function() {
-			    if (!moved_touch) {
-			        spinIt(event.target);
-			        selectPopup(event.target);
-			        event.stopPropagation();
-			    };
-			},100);
-		}
-		
-	    first.target.dispatchEvent(simulatedEvent);
+
+        if (type = "mouseup") {
+            clickTimeout = setTimeout(function () {
+                if (!moved_touch) {
+                    if (lastTargetId != event.target.id) {
+                        spinIt(event.target);
+                        selectPopup(event.target);
+                        lastTargetId = event.target.id;
+                    }
+                };
+            }, 100);
+        }
+
+        first.target.dispatchEvent(simulatedEvent);
         event.preventDefault();
     }
 }
@@ -159,4 +163,4 @@ function touchInit() {
     document.addEventListener("touchmove", touchHandler, true);
     document.addEventListener("touchend", touchHandler, true);
     document.addEventListener("touchcancel", touchHandler, true);
-}               
+}
