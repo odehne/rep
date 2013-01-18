@@ -36,10 +36,10 @@
         this.popup("Templates/forgotMyPassword.html");
     },
     this.popupRegister = function(ctrlToHide, parent) {
-        ctrlToHide.remove();
+        ctrlToHide.hide();
         parent.append("<div id='register' />");
         $("#register").load("Templates/register.html", function() {
-            $("#errorMessage").hide();
+            $("#registerErrorMessage").hide();
         });
     },
     this.logout = function() {
@@ -50,20 +50,28 @@
     },
     this.registerNewUser = function() {
         $("#registerErrorMessage").hide();
-        $.post(m.serviceUrl + "friends", { username: $("#txtRegisterUsername").val(), password: $("#txtRegisterPassword").val(), email: $("#txtRegisterEmail").val() }, function (data) {
-           if (data != "OK") {
-               $("#registerErrorMessage").innerHTML=data;
-               $("#registerErrorMessage").show();
-           } else {
-               alert("Willkommen, du bist jetzt registriert und kannst dich anmelden.");
-               dlg.showLogin($("#register"), $('#detailsContainer'));
-           }
+        $.post(m.serviceUrl + "friends", {
+            username: $("#txtRegisterUsername").val(),
+            password: $("#txtRegisterPassword").val(),
+            email: $("#txtRegisterEmail").val()
+            }, function (data) {
+                if (data != "OK") {
+                    $("#registerErrorMessage").innerHTML=data;
+                    $("#registerErrorMessage").show();
+                } else {
+                    alert("Willkommen, du bist jetzt registriert und kannst dich anmelden.");
+                    dlg.showLogin($("#register"), $('#detailsContainer'));
+                }
         });
     },
     this.showLogin = function(ctrlToHide, parent) {
         ctrlToHide.hide();
+        if (document.getElementById("login") != undefined) {
+            $("#login").show();
+            return;
+        };
         parent.append("<div id='login' />");
-        $("#login").load("Templates/login.html", function() {
+        $("#login").load("Templates/login.html", function () {
             $("#errorMessage").hide();
             $("#txtUsername").focus();
             $("#registerNew").bind("mouseup", function() {

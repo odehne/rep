@@ -731,7 +731,7 @@ Public Class BLLItems
             id = r.ID
 
             If r.Name.Length > 40 Then
-                title = r.Name.Substring(1, 40) & "..."
+                title = r.Name.Substring(0, 29) & " ..."
             Else
                 title = r.Name
             End If

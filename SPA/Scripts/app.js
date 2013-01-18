@@ -184,8 +184,8 @@
         dlg.popupFriendsSelector();
     },
     this.showLoggedInUser = function() {
-        if ($.cookie("movie-user-name") != null) {
-            $("#loggedInUser").html("<a href='#' onmouseup='logout();'>" + $.cookie("movie-user-name") + " abmelden</a>");
+        if ($.cookie("movie-user-name") != null && $.cookie("movie-user-name")!="") {
+            $("#loggedInUser").html("<a href='#' onmouseup='dlg.logout();'>" + $.cookie("movie-user-name") + " abmelden</a>");
         } else {
             $("#loggedInUser").empty();
         };
