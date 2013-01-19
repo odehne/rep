@@ -146,6 +146,7 @@
     <Compile Include="Friends.vb" />
     <Compile Include="Genres.vb" />
     <Compile Include="Items.vb" />
+    <Compile Include="PasswordReset.vb" />
     <Compile Include="Tools\EmailSender.vb" />
     <Compile Include="BLL\Interfaces\IGenreRepository.vb" />
     <Compile Include="BLL\Interfaces\IItemRepository.vb" />

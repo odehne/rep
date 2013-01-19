@@ -32,8 +32,22 @@
     this.popupMovieDetails = function(movie) {
         this.popup("Templates/moviesDetails.html", movie, "#dialog-message");
     },
-    this.popupForgotMyPassword = function() {
-        this.popup("Templates/forgotMyPassword.html");
+    this.popupForgotMyPassword = function(ctrlToHide, parent) {
+        ctrlToHide.hide();
+        parent.append("<div id='forgotMyPassword' />");
+        $("#forgotMyPassword").load("Templates/forgotMyPassword.html", function () {
+            $("#ferrorMessage").hide();
+            $("#sendEmail").bind("mouseup", function () {
+                $.getJSON(m.serviceUrl + "passwordreset?cmd=request&email=" + $("#txtForgotEmail").val(), function (data) {
+                    if (data == "OK") {
+                        alert("Bitte schau in deinen Email Posteingang, dort sollte sich eine neue Email befinden ;-)");
+                    } else {
+                        $("#ferrorMessage").innerHTML=data;
+                        $("#ferrorMessage").show();
+                    }
+                });
+            });
+        });
     },
     this.popupRegister = function(ctrlToHide, parent) {
         ctrlToHide.hide();

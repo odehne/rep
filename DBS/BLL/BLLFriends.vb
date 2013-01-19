@@ -123,15 +123,15 @@ Public Class BLLFriends
     Public Function GetUserByEmail(ByVal Email As String) As User
         Dim d As New MediaLibraryLinqDataContext()
 
-        Dim source = From r In d.tblUsers _
-                     Select r Where r.Email.Equals(Email, StringComparison.InvariantCultureIgnoreCase)
+        Dim user = (From r In d.tblUsers _
+                     Select r Where r.Email.ToLower = Email.ToLower).SingleOrDefault
 
-
-        If source.Count > 0 Then
-            Return ConvertToServiceUser(source.First)
-        Else
-            Return Nothing
+        If Not user Is Nothing Then
+            Return ConvertToServiceUser(user)
         End If
+
+        Return Nothing
+
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, False)> _
@@ -259,6 +259,73 @@ Public Class BLLFriends
 
         Return Nothing
     End Function
+
+    Public Function ValidPasswordRequest(g As String) As Boolean
+
+        Using ctx As New MediaLibraryLinqDataContext()
+
+            Dim user = (From us In ctx.tblUsers
+            Where us.PasswordAnswer = g).SingleOrDefault
+
+            If Not user Is Nothing Then
+                If user.FailedPasswordAnswerAttemptWindowStart Is Nothing Then
+                    Return False
+                End If
+                If DateDiff(DateInterval.Hour, Now, user.FailedPasswordAnswerAttemptWindowStart.Value) > 4 Then
+                    Return False
+                End If
+                Return True
+            End If
+        End Using
+
+
+    End Function
+
+    Public Sub SetPasswordResetRequest(ByVal id As Integer)
+
+        Using ctx As New MediaLibraryLinqDataContext()
+
+            Dim user = (From us In ctx.tblUsers _
+            Where us.ID = id).SingleOrDefault
+
+            user.PasswordAnswer = Guid.NewGuid.ToString()
+            user.FailedPasswordAttemptWindowStart = Date.Now
+
+            ctx.SubmitChanges()
+
+            Dim body = "Hi " & user.Username & vbNewLine & vbNewLine
+            body &= "um dein Passwort zurückzusetzen klicke bitte auf den folgenden link: " & vbNewLine & vbNewLine
+            body &= BLLSettings.Settings.BaseUrl & "/passwordreset.html?cmd=reset&tempkey=" & user.PasswordAnswer & vbNewLine & vbNewLine
+            body &= "Auf der folgenden Seite kannst du ein neues Passwort vergeben." & vbNewLine & vbNewLine
+            body &= "Have fun," & vbNewLine & "Movie Manager 2013"
+
+            EmailSender.SendEmail("Passwort zurücksetzen", body, user.Email)
+
+        End Using
+
+    End Sub
+
+    Public Sub ResetPassword(ByVal tempKey As String, ByVal newPassword As String)
+
+        Using ctx As New MediaLibraryLinqDataContext()
+
+            Dim user = (From us In ctx.tblUsers Where us.PasswordAnswer = tempKey).SingleOrDefault
+
+            If user Is Nothing Then
+                Throw New ArgumentException("Benutzer konnte nicht gefunden werden.")
+            End If
+
+            If String.IsNullOrEmpty(newPassword) Then
+                Throw New ArgumentException("Das Passwort darf nicht leer sein.")
+            End If
+
+            user.Password = newPassword
+
+            ctx.SubmitChanges()
+
+        End Using
+
+    End Sub
 End Class
 
 Public Class UserOnly
