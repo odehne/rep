@@ -86,7 +86,7 @@
         });
     },
     this.lentTo=function(friendId) {
-        $.getJSON(m.serviceUrl + "items?id=" + m.selectedMovieId + "&lentTo=" + friendId, function (data) {
+        $.getJSON(m.serviceUrl + "items?id=" + m.selectedMovie + "&lentTo=" + friendId, function (data) {
             if (data == "OK") {
                 alert("Der Film wurde als ausgeliehen vermerkt.");
             } else {

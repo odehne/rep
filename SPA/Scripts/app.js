@@ -3,7 +3,7 @@
     this.movies = [],
     this.friends = [],
     this.genres = [],
-    this.selectedMovieId = 0,
+    this.selectedMovie = null,
     this.drawMovies = function() {
         $("#ModelContainer").innerHTML = "";
         for (var i = 0; i < this.movies.length; i++) {
@@ -144,24 +144,27 @@
     this.showDetails = function(ctrlId) {
         if (ctrlId != undefined && ctrlId.length > 2) {
             var index = ctrlId.substring(2);
-            this.selectedMovieId = this.movies[index].ID;
+            this.selectedMovie = this.movies[index];
             dlg.popupMovieDetails(this.movies[index]);
         }
         ;
     },
-    this.showLentTo = function (movieId) {
+    this.showLentTo = function () {
         if (!$.cookie('movie-user-name')) {
             dlg.showLogin($('#details'), $('#detailsContainer'));
         } else {
-            m.selectedMovieId = movieId;
-            dlg.popupLentToSelector($('#details'), $('#detailsContainer'));
+            if (m.selectedMovie.OwnerID == $.cookie('movie-user-id')) {
+                dlg.popupLentToSelector($('#details'), $('#detailsContainer'));
+            } else {
+                alert("Es scheint, als gehörte dir dieser Film nicht.");
+            }
         };
     },
-    this.borrowMovie = function (movieId) {
+    this.borrowMovie = function () {
         if (!$.cookie('movie-user-name')) {
                 dlg.showLogin($('#details'), $('#detailsContainer'));
         } else {
-            $.getJSON(this.serviceUrl + "items?borrowTo=" + $.cookie('movie-user-name') + "&id=" + movieId, function(data) {
+            $.getJSON(this.serviceUrl + "items?borrowTo=" + $.cookie('movie-user-name') + "&id=" + m.selectedMovie.ID, function(data) {
                 alert(data);
             });
         };
