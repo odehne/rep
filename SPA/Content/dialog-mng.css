@@ -71,7 +71,7 @@
      
     background:#b4b4b4;
     /* styling of the dialog box, i have a fixed dimension for this demo */
-    width:700px;
+    width:800px;
     height: 520px;
 
     /* make sure it has the highest z-index */
@@ -200,7 +200,7 @@ a.button:hover {
 
 
 #detailsContainer {
-    width: 670px;
+    width: 770px;
     height: 470px;
     background-color: #4d4d4d;
     color: #f0f0f0;

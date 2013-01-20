@@ -268,10 +268,10 @@ Public Class BLLFriends
             Where us.PasswordAnswer = g).SingleOrDefault
 
             If Not user Is Nothing Then
-                If user.FailedPasswordAnswerAttemptWindowStart Is Nothing Then
+                If user.FailedPasswordAttemptWindowStart Is Nothing Then
                     Return False
                 End If
-                If DateDiff(DateInterval.Hour, Now, user.FailedPasswordAnswerAttemptWindowStart.Value) > 4 Then
+                If DateDiff(DateInterval.Hour, Now, user.FailedPasswordAttemptWindowStart.Value) > 4 Then
                     Return False
                 End If
                 Return True
@@ -295,7 +295,7 @@ Public Class BLLFriends
 
             Dim body = "Hi " & user.Username & vbNewLine & vbNewLine
             body &= "um dein Passwort zurückzusetzen klicke bitte auf den folgenden link: " & vbNewLine & vbNewLine
-            body &= BLLSettings.Settings.BaseUrl & "/passwordreset.html?cmd=reset&tempkey=" & user.PasswordAnswer & vbNewLine & vbNewLine
+            body &= BLLSettings.Settings.FrontendUrl & "/passwordreset.html?cmd=reset&tempkey=" & user.PasswordAnswer & vbNewLine & vbNewLine
             body &= "Auf der folgenden Seite kannst du ein neues Passwort vergeben." & vbNewLine & vbNewLine
             body &= "Have fun," & vbNewLine & "Movie Manager 2013"
 

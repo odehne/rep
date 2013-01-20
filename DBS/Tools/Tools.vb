@@ -13,6 +13,20 @@ Public Class Tools
         Return String.Empty
     End Function
 
+    Public Shared Function CleanupMovieTitle(ByVal name As String) As String
+
+        If name.Contains(" (") Then
+            Return name.Substring(0, name.IndexOf("(") - 1)
+        End If
+
+
+        If name.Contains(" [") Then
+            Return name.Substring(0, name.IndexOf("[") - 1)
+        End If
+
+        Return name
+    End Function
+
     Public Shared Function BorrowedSinceDays(ByVal BorrowDate As Object) As String
 
         If TypeOf BorrowDate Is DBNull Then

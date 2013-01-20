@@ -6,11 +6,11 @@
         Public Property AWSAssociateTag As String
         Public Property AWSDestinationUrl As String
         Public Property BaseUrl As String
-
         Public Property SmtpServer As String
         Public Property SmtpUser As String
         Public Property SmtpPassword As String
         Public Property SmtpReplyToAddress As String
+        Public Property FrontendUrl As String
     End Class
 
     Public Sub New()
@@ -54,6 +54,7 @@
         _settings.AWSAssociateTag = GetValue("AWS_ASSOCIATE_TAG")
         _settings.AWSDestinationUrl = GetValue("AWS_DESTINATION_URL")
         _settings.BaseUrl = GetValue("BaseUrl")
+        _settings.FrontendUrl = GetValue("FrontendUrl")
         _settings.SmtpServer = GetValue("SmtpServer")
         _settings.SmtpUser = GetValue("SmtpUser")
         _settings.SmtpPassword = GetValue("SmtpPassword")

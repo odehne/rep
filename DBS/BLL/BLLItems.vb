@@ -352,7 +352,7 @@ Public Class BLLItems
     End Function
 
 
-    Public Function UpdateBorrow(ByVal ID As Integer, Optional ByVal BorrowedByID As Integer = 0, Optional ByVal BorrowedSince As Date = #1/1/1990#) As String
+    Public Function UpdateBorrow(ByVal ID As Integer, Optional ByVal BorrowedByID As Integer = 0, Optional ByVal BorrowedSince As Date = #1/1/1990#, Optional sendEmail As Boolean = True) As String
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
 
@@ -361,8 +361,6 @@ Public Class BLLItems
 
             If src.Count > 0 Then
                 Dim movie As tblItem = src.First
-
-
 
                 movie.BorrowedByID = BorrowedByID
                 movie.BorrowedSince = Now
@@ -376,13 +374,15 @@ Public Class BLLItems
                 End Try
 
                 'Jetzt noch die Emails versenden
-                 Dim Lender As tblUser = uBll.GetTblUserByID(movie.BorrowedByID)
-                Dim Owner As tblUser = uBll.GetTblUserByID(movie.OwnerID)
-                Dim RequestBody As String = CreateBorrowRequestBody(Owner.Username, Lender.Username, movie)
-                Dim NotifyBody As String = CreateLenderNotificationBody(Owner.Username, Lender.Username, movie)
+                If sendEmail Then
+                    Dim Lender As tblUser = uBll.GetTblUserByID(movie.BorrowedByID)
+                    Dim Owner As tblUser = uBll.GetTblUserByID(movie.OwnerID)
+                    Dim RequestBody As String = CreateBorrowRequestBody(Owner.Username, Lender.Username, movie)
+                    Dim NotifyBody As String = CreateLenderNotificationBody(Owner.Username, Lender.Username, movie)
 
-                EmailSender.SendEmail("Movie Manager Leihanfrage", RequestBody, Owner.Email)
-                EmailSender.SendEmail("Movie Manager Leihanfrage", NotifyBody, Lender.Email)
+                    EmailSender.SendEmail("Movie Manager Leihanfrage", RequestBody, Owner.Email)
+                    EmailSender.SendEmail("Movie Manager Leihanfrage", NotifyBody, Lender.Email)
+                End If
 
             End If
 
@@ -391,44 +391,7 @@ Public Class BLLItems
 
         Return "OK"
 
-        'Dim iBLL As BLLItems = New BLLItems
-        'Dim itms As MediaLibrary.tblItemsDataTable = Nothing
-        'Dim itm As MediaLibrary.tblItemsRow = Nothing
-        'Dim lRet As Integer = 0
-
-        'If ID <= 0 Then
-        '    Return "Item ID is zero"
-        '    Exit Function
-        'End If
-
-        'itms = Adapter.GetItemByID(ID)
-
-        'If itms.Rows.Count <= 0 Then
-        '    Return "Item not found for request ID " & ID
-        'Else
-        '    itm = itms(0)
-        'End If
-
-        'If BorrowedByID = 0 Then
-        '    itm.SetBorrowedByIDNull()
-        'Else
-        '    itm.BorrowedByID = BorrowedByID
-        'End If
-
-        'If LentSince = #1/1/1990# Then
-        '    itm.SetLentSinceNull()
-        'Else
-        '    itm.LentSince = LentSince
-        'End If
-
-        'lRet = Adapter.Update(itm)
-
-        'If lRet > 0 Then
-        '    Return "OK"
-        'Else
-        '    Return "Update failed"
-        'End If
-    End Function
+      End Function
 
     Public Function GetItems() As System.Collections.Generic.List(Of MovieItem) Implements MediaManager2010.IItemRepository.GetItems
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
@@ -547,7 +510,7 @@ Public Class BLLItems
 
         With m
             .ID = r.ID
-            .Title = r.Name
+            .Title = Tools.CleanupMovieTitle(r.Name)
             .GenreName = r.tblGenre.Name
             .GenreID = r.GenreID
             .Actor1ID = r.Actor1ID
@@ -636,7 +599,7 @@ Public Class BLLItems
             .CoverUrlMediaManager = BLLSettings.Settings.BaseUrl & "/imagehandler?ID=" & r.ID
             If Not String.IsNullOrEmpty(r.Description) Then
                 .Description = Tools.RemoveHTMLTags(r.Description)
-                If .Description.Length > 400 Then .Description = .Description.Substring(0, 400) & "..."
+                If .Description.Length > 800 Then .Description = .Description.Substring(0, 799) & "..."
             End If
             .EAN = r.EAN
             Try
@@ -677,6 +640,8 @@ Public Class BLLItems
 
         Return m
     End Function
+
+
 
     Private Sub GetMultipleGenres(ByRef itm As tblItem, ByRef m As MovieItem)
 
@@ -729,12 +694,7 @@ Public Class BLLItems
 
         Public Sub New(r As tblItem)
             id = r.ID
-
-            If r.Name.Length > 40 Then
-                title = r.Name.Substring(0, 29) & " ..."
-            Else
-                title = r.Name
-            End If
+            title = Tools.CleanupMovieTitle(r.Name)
         End Sub
     End Class
 

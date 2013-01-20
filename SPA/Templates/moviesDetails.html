@@ -30,8 +30,13 @@
             <b>Verliehen an</b> ${BorrowedByName}</p>
             <br />
             <p>${Description} </p>
-            <a href="#" class="button" onmouseup="" style="width:100px">Zurück erhalten</a>
-            <a href="#" class="button" onmouseup="m.borrowMovie(${ID});" style="width:100px">Ausleihen</a>
+            <table border="0">
+                <tr>
+                    <td><a href="#" class="button" onmouseup="m.showLentTo(${ID});" style="width:100px" id="btnLentTo">Verliehen an</a></td>
+                    <td><a href="#" class="button" onmouseup="" style="width:100px">Zurück erhalten</a></td>
+                    <td><a href="#" class="button" onmouseup="m.borrowMovie(${ID});" style="width:100px">Ausleihen</a></td>
+                </tr>
+            </table>
         </div>
   
     </div>

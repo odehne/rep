@@ -113,6 +113,7 @@
     <Content Include="Templates\forgotMyPassword.html" />
     <Content Include="Templates\friendsDetails.html" />
     <Content Include="Templates\genresDetails.html" />
+    <Content Include="Templates\lentToSelector.html" />
     <Content Include="Templates\login.html" />
     <Content Include="Templates\moviesDetails.html" />
     <Content Include="Index.html" />

@@ -78,6 +78,23 @@
                 }
         });
     },
+    this.popupLentToSelector = function (ctrlToHide, parent) {
+        ctrlToHide.hide();
+        parent.append("<div id='lentToSelector' />");
+        $("#lentToSelector").load("Templates/lentToSelector.html", function () {
+            $("#lentToTemplate").tmpl(m.friends).appendTo($("#friendsList"));
+        });
+    },
+    this.lentTo=function(friendId) {
+        $.getJSON(m.serviceUrl + "items?id=" + m.selectedMovieId + "&lentTo=" + friendId, function (data) {
+            if (data == "OK") {
+                alert("Der Film wurde als ausgeliehen vermerkt.");
+            } else {
+                $("#ferrorMessage").innerHTML = data;
+                $("#ferrorMessage").show();
+            }
+        });
+    },
     this.showLogin = function(ctrlToHide, parent) {
         ctrlToHide.hide();
         if (document.getElementById("login") != undefined) {

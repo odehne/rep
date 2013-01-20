@@ -19,53 +19,72 @@
         width: 350px;
     }
 
-      a.AlphabetButton {
-        font-size: 12pt;
-        color: #f0f0f0;
-        text-decoration:none;
-        margin-left: 10px;
-        margin-top:5px;
-        margin-right: 5px;
-        margin-bottom:5px;
+        #alphabet .button {
+        margin: 5px;
+        width: 40px;
+        text-align: center;
     }
+    table {
+        border: none;
+    }
+
 
 </style>
 
 <h1>Filme.</h1>
 <h2>Die Liste aller Filme ist recht lang, daher schränke die Suche erst durch den Anfangsbuchstaben ein, dann wähle den Titel aus der Liste.</h2>
 
+<!--    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('a', 'movieList');">a</a>-->
 <div id="alphabet">
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('a', 'movieList');">a</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('b', 'movieList');">b</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('c', 'movieList');">c</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('d', 'movieList');">d</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('e', 'movieList');">e</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('f', 'movieList');">f</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('g', 'movieList');">g</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('h', 'movieList');">h</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('i', 'movieList');">i</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('j', 'movieList');">j</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('k', 'movieList');">k</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('l', 'movieList');">l</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('m', 'movieList');">m</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('n', 'movieList');">n</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('o', 'movieList');">o</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('p', 'movieList');">p</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('q', 'movieList');">q</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('r', 'movieList');">r</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('s', 'movieList');">s</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('t', 'movieList');">t</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('u', 'movieList');">u</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('v', 'movieList');">v</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('w', 'movieList');">w</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('x', 'movieList');">x</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('y', 'movieList');">y</a>
-    <a href="#"  class="AlphabetButton" onmouseup="m.loadMoviesWithLetter('z', 'movieList');">z</a>
-</div>
-<div id="listContainer">
-    <select id="movieList" size="15">
-    </select>
-</div>
+    <table>
+        <tr>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('a', 'movieList');">a</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('b', 'movieList');">b</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('c', 'movieList');">c</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('d', 'movieList');">d</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('e', 'movieList');">e</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('f', 'movieList');">f</a></td>
+        </tr>        
+        <tr>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('g', 'movieList');">g</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('h', 'movieList');">h</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('i', 'movieList');">i</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('j', 'movieList');">j</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('k', 'movieList');">k</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('l', 'movieList');">l</a></td>
+        </tr>        
+        <tr>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('m', 'movieList');">m</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('n', 'movieList');">n</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('o', 'movieList');">o</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('p', 'movieList');">p</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('q', 'movieList');">q</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('r', 'movieList');">r</a></td>
+        </tr>        
+        <tr>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('s', 'movieList');">s</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('t', 'movieList');">t</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('u', 'movieList');">u</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('v', 'movieList');">v</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('w', 'movieList');">w</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('x', 'movieList');">x</a></td>
+        </tr>        
+        <tr>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('y', 'movieList');">y</a></td>
+            <td><a href="#"  class="button" onmouseup="m.loadMoviesWithLetter('z', 'movieList');">z</a></td>
+               <td colspan="2" >
+                        <a href="#" class="button" onmouseup="m.loadLent()" style="width:100px">Verliehene</a>     
+                  </td>    
+                  <td colspan="2" >
+                        <a href="#" class="button" onmouseup="m.loadBorrowed()" style="width:100px">Ausgeliehene</a>     
+                  </td>    
+        </tr>        
+      </table>
+</div><div id="listContainer">
+                     <select id="movieList" size="8">
+                     </select>
+        
+      </div>
 
 <script type="text/javascript">
     document.getElementById("movieList").onchange = function (e) {

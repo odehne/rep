@@ -89,6 +89,23 @@ Public Class Items
             Return
         End If
 
+        If Not req.QueryString("lentTo") Is Nothing Then
+            Dim lentTo As Integer = 0
+            context.Response.ContentType = "application/json"
+            If Not Integer.TryParse(req.QueryString("lentTo"), lentTo) Then
+                context.Response.Write(Tools.Tojson("Die Id des Freundes konnte nicht übermittelt werden :-/"))
+                Return
+            End If
+            If id <= 0 Then
+                context.Response.Write(Tools.Tojson("Die Id des Films konnte nicht übermittelt werden :-/"))
+                Return
+            End If
+            Dim iBll As New BLLItems
+            Dim ret = iBll.UpdateBorrow(id, friendId, Now, False)
+            context.Response.Write(Tools.Tojson(ret))
+            Return
+        End If
+
         If Not req.QueryString("borrowTo") Is Nothing Then
             borrowToUserName = req.QueryString("borrowTo")
             context.Response.ContentType = "application/json"

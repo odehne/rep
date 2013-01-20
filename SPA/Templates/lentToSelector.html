@@ -1,0 +1,35 @@
+﻿<style>
+    #friendsList {
+        width: 370px;
+    }
+</style>
+
+<h1>Verliehen.</h1>
+<h2>Um diesen Film als verliehen an einen deiner Freunde zu markieren, klicke auf den Namen deines Freundes in der Liste.</h2>
+
+<div id="listContainer">
+    <table border="0">
+        <tr>
+            <td>
+                <select value="${FriendId}" id="friendsList" size="15">
+                    {{tmpl(friends) "#detailsTemplate"}}                            
+                </select>  
+            </td>        
+           </tr>    
+           <tr>
+                        <td><div id="ferrorMessage"></div></td>
+                    </tr>
+    </table>
+
+</div>
+
+
+<script id="lentToTemplate" type="text/x-jquery-tmpl">
+    <option value="${ID}">${Username}</option>
+</script>
+
+<script type="text/javascript">
+    document.getElementById("friendsList").onchange = function (e) {
+        dlg.lentTo(this.value);
+    };
+</script>    
