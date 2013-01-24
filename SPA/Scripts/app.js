@@ -132,6 +132,33 @@
             }
         });
     },
+    this.loadBorrowed = function() {
+        this.cleanUp();
+        if ($.cookie('movie-user-id') != null) {
+            $.getJSON(this.serviceUrl + "items?borrowedById=" + $.cookie('movie-user-id'), function(data) {
+                m.movies = data;
+                if (m.movies.length > 0) {
+                    m.drawMovies();
+                }
+            });
+        } else {
+            alert("Du musst angemeldet sein, um diese Ansicht nutzen zu können.");
+        }
+    },
+    this.loadLent = function() {
+        this.cleanUp();
+        if ($.cookie('movie-user-id') != null) {
+            $.getJSON(this.serviceUrl + "items?lentById=" + $.cookie('movie-user-id'), function (data) {
+                m.movies = data;
+                if (m.movies.length > 0) {
+                    m.drawMovies();
+                }
+            });
+        } else {
+            alert("Du musst angemeldet sein, um diese Ansicht nutzen zu können.");
+        }
+
+    },
     this.loadMoviesByActor = function(actorId) {
         this.cleanUp();
         $.getJSON(this.serviceUrl + "items?actorId=" + actorId, function(data) {
@@ -167,6 +194,23 @@
             $.getJSON(this.serviceUrl + "items?borrowTo=" + $.cookie('movie-user-name') + "&id=" + m.selectedMovie.ID, function(data) {
                 alert(data);
             });
+        };
+    },
+    this.returnMovie = function() {
+        if (!$.cookie('movie-user-id')) {
+            dlg.showLogin($('#details'), $('#detailsContainer'));
+        } else {
+            if ($.cookie('movie-user-id') != m.selectedMovie.OwnerID) {
+                alert("Der Film scheint nicht dir zu geören.");
+            } else {
+                $.getJSON(this.serviceUrl + "items?returnMovie=" + m.selectedMovie.ID, function (data) {
+                    if (data == "OK") {
+                        m.selectedMovie.OwnerName = "";
+                    } else {
+                        alert(data);
+                    }
+                });
+            }
         };
     },
     this.addMovie= function () {

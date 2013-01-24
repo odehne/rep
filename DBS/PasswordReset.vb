@@ -23,8 +23,8 @@ Public Class PasswordReset
         Dim email As String = ""
         Dim newPassword As String = ""
         Dim uBll As New BLLFriends
-        Dim cmd As String
-        Dim tempKey As String
+        Dim cmd As String = String.Empty
+        Dim tempKey As String = String.Empty
 
         If Not req.QueryString("email") Is Nothing Then
             email = req.QueryString("email")

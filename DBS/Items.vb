@@ -68,6 +68,18 @@ Public Class Items
             addByEan = req.QueryString("addByEAN")
         End If
 
+        If Not req.QueryString("returnMovie") Is Nothing Then
+            Dim returnMovieId As Integer = 0
+            context.Response.ContentType = "application/json"
+            If Integer.TryParse(req.QueryString("returnMovie"), returnMovieId) Then
+                Dim ret = New BLLItems().ReturnBorrowedMovie(returnMovieId)
+                context.Response.Write(Tools.Tojson(ret))
+            Else
+                context.Response.Write(Tools.Tojson("Die Id des Films konnte nicht übermittelt werden :-/"))
+            End If
+            Return
+        End If
+
         If Not String.IsNullOrEmpty(addByEan) Then
             Dim itm As New ItemLookup()
             Dim lst = itm.Search(addByEan, ItemLookup.SearchTypeE.EAN)
@@ -79,14 +91,42 @@ Public Class Items
                 m.OwnerID = friendId
                 Try
                     Dim result = New BLLItems().UpdateItem(lst.First)
-                    context.Response.Write(Tools.ToJson(New StoreResult(result.Title & " wurde erfolgreich hinzugefügt am " & result.DateAdded, result)))
+                    context.Response.Write(Tools.Tojson(New StoreResult(result.Title & " wurde erfolgreich hinzugefügt am " & result.DateAdded, result)))
                 Catch ex As Exception
-                    context.Response.Write(Tools.ToJson(New StoreResult("Es ist ein Fehler beim Speichern der Anfrage aufgetreten :-|", Nothing)))
+                    context.Response.Write(Tools.Tojson(New StoreResult("Es ist ein Fehler beim Speichern der Anfrage aufgetreten :-|", Nothing)))
                 End Try
             Else
-                context.Response.Write(Tools.ToJson(New StoreResult("Es konnte kein Film gefunden werden :-|", Nothing)))
+                context.Response.Write(Tools.Tojson(New StoreResult("Es konnte kein Film gefunden werden :-|", Nothing)))
             End If
             Return
+        End If
+
+        If Not req.QueryString("borrowedById") Is Nothing Then
+            Dim borrowedById As Integer = 0
+            context.Response.ContentType = "application/json"
+            If Not Integer.TryParse(req.QueryString("borrowedById"), borrowedById) Then
+                context.Response.Write(Tools.Tojson("Die Id des Freundes konnte nicht übermittelt werden :-/"))
+                Return
+            End If
+            Dim iBll As New BLLItems
+            Dim ret = iBll.GetItemsByBorrowerID(borrowedById)
+            context.Response.Write(Tools.Tojson(ret))
+            Return
+
+        End If
+
+        If Not req.QueryString("lentById") Is Nothing Then
+            Dim lentById As Integer = 0
+            context.Response.ContentType = "application/json"
+            If Not Integer.TryParse(req.QueryString("lentById"), lentById) Then
+                context.Response.Write(Tools.Tojson("Die Id des Freundes konnte nicht übermittelt werden :-/"))
+                Return
+            End If
+            Dim iBll As New BLLItems
+            Dim ret = iBll.GetItemsByLenderByID(lentById)
+            context.Response.Write(Tools.Tojson(ret))
+            Return
+
         End If
 
         If Not req.QueryString("lentTo") Is Nothing Then
@@ -114,15 +154,15 @@ Public Class Items
                 If Not user Is Nothing Then
                     Dim result = New BLLItems().UpdateBorrow(id, user.ID, Now)
                     If result <> "OK" Then
-                        context.Response.Write(Tools.ToJson("Beim Erstellen der Leihanfrage ist uns ein Fehler unterlaufen :-|"))
+                        context.Response.Write(Tools.Tojson("Beim Erstellen der Leihanfrage ist uns ein Fehler unterlaufen :-|"))
                     Else
-                        context.Response.Write(Tools.ToJson("Die Leihanfrage ist gespeichert und der Verleiher ist informiert :-)"))
+                        context.Response.Write(Tools.Tojson("Die Leihanfrage ist gespeichert und der Verleiher ist informiert :-)"))
                     End If
                 Else
-                    context.Response.Write(Tools.ToJson("Der Benutzer konnte leider nicht ermittelt werden :-|"))
+                    context.Response.Write(Tools.Tojson("Der Benutzer konnte leider nicht ermittelt werden :-|"))
                 End If
             Else
-                context.Response.Write(Tools.ToJson("Die Id des Films wurde nicht korrekt übermittelt :-|"))
+                context.Response.Write(Tools.Tojson("Die Id des Films wurde nicht korrekt übermittelt :-|"))
             End If
             Return
         End If
@@ -130,7 +170,7 @@ Public Class Items
         If Not String.IsNullOrEmpty(letter) Then
             Dim titles = New BLLItems().GetTitlesBeginningWith(letter)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Tools.ToJson(titles))
+            context.Response.Write(Tools.Tojson(titles))
             Return
         End If
 
@@ -138,32 +178,32 @@ Public Class Items
         If genreId > 0 Then
             Dim movies = New BLLItems().GetItemsByGenreID(genreId)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Tools.ToJson(movies))
+            context.Response.Write(Tools.Tojson(movies))
             Return
         End If
 
         If actorId > 0 Then
             Dim movies = New BLLItems().GetItemsByActorID(actorId)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Tools.ToJson(movies))
+            context.Response.Write(Tools.Tojson(movies))
             Return
         End If
 
         If friendId > 0 Then
             Dim movies = New BLLItems().GetItemsByOwnerID(friendId)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Tools.ToJson(movies))
+            context.Response.Write(Tools.Tojson(movies))
             Return
         End If
 
         If id > 0 Then
             Dim movie = New BLLItems().GetItemByID(id)
             context.Response.ContentType = "application/json"
-            context.Response.Write(Tools.ToJson(movie))
+            context.Response.Write(Tools.Tojson(movie))
         Else
             Dim movies = New BLLItems().PickRandomMovies
             context.Response.ContentType = "application/json"
-            context.Response.Write(Tools.ToJson(movies))
+            context.Response.Write(Tools.Tojson(movies))
         End If
 
         context.Response.Flush()

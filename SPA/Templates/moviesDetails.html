@@ -19,26 +19,39 @@
         </div>
         <div id="details">
             <h1>${Title}</h1>
-            <p><b>mit </b><a href="#" class="actor" onmouseup="m.loadMoviesByActor(${Actor1ID});$('#dialog-overlay, #dialog-box').remove();">${Actor1Name}</a>, 
+            <p><b>mit </b>
+                <a href="#" class="actor" onmouseup="m.loadMoviesByActor(${Actor1ID});$('#dialog-overlay, #dialog-box').remove();">${Actor1Name}</a>, 
                 <a href="#" class="actor"  onmouseup="m.loadMoviesByActor(${Actor2ID});$('#dialog-overlay, #dialog-box').remove();">${Actor2Name}</a>, 
                 <a href="#" class="actor"  onmouseup="m.loadMoviesByActor(${Actor3ID});$('#dialog-overlay, #dialog-box').remove();">${Actor3Name}</a>
                 <br />
-                <br />
                 <b>Regie</b> ${DirectorName}<br/>
                 <b>Published</b> ${PublishDate}<br/>
-                <b>Eigentümer</b> ${OwnerName}</p>
-            <b>Verliehen an</b> ${BorrowedByName}</p>
+                <b>Eigentümer</b> ${OwnerName}
+                <b>Verliehen an</b> ${BorrowedByName}</p>
             <br />
             <p>${Description} </p>
             <table border="0">
                 <tr>
                     <td><a href="#" class="button" onmouseup="m.showLentTo();" style="width:100px" id="btnLentTo">Verliehen an</a></td>
-                    <td><a href="#" class="button" onmouseup="" style="width:100px">Zurück erhalten</a></td>
+                    <td><a href="#" class="button" onmouseup="m.returnMovie()" style="width:100px">Zurück erhalten</a></td>
                     <td><a href="#" class="button" onmouseup="m.borrowMovie();" style="width:100px">Ausleihen</a></td>
                 </tr>
             </table>
         </div>
-  
+        <div id="ratings">
+            <h1>Bewertung und Kommentare</h1>
+            <p>Bewertung
+                ${Ratings.RatingTable}
+            </p>
+            <table border="0">
+                <tr>
+                    <td> {{tmpl(Ratings) "#commentsTemplate"}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    
 </script>
+<script id="commentsTemplate" type="text/x-jquery-tmpl">
+    <td>${Comment}</td>
+</script>
+

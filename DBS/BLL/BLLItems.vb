@@ -715,4 +715,28 @@ Public Class BLLItems
 
         End Using
     End Function
+
+    Public Function GetItemsByBorrowerID(ByVal borrowedById As Integer) As List(Of MovieItem)
+        Using db As MediaLibraryLinqDataContext = CreateDataContext()
+            Dim source = From r In db.tblItems _
+                    Select r Where r.BorrowedByID = borrowedById
+
+            Dim lst As List(Of MovieItem) = ConvertToList(source.ToList)
+
+            Return lst
+        End Using
+
+    End Function
+    Public Function GetItemsByLenderByID(ByVal lenderId As Integer) As List(Of MovieItem)
+        Using db As MediaLibraryLinqDataContext = CreateDataContext()
+            Dim source = From r In db.tblItems _
+                    Select r Where r.OwnerID = lenderId And r.BorrowedByID > 0
+
+            Dim lst As List(Of MovieItem) = ConvertToList(source.ToList)
+
+            Return lst
+
+        End Using
+
+    End Function
 End Class

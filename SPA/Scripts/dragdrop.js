@@ -141,13 +141,17 @@ function touchHandler(event) {
         posx = document.all ? window.event.clientX : event.pageX;
         posy = document.all ? window.event.clientY : event.pageY;
 
-        if (type = "mouseup") {
+        if (type == "mouseup") {
             clickTimeout = setTimeout(function () {
                 if (!moved_touch) {
+                    alert("mouseup");
                     if (lastTargetId != event.target.id) {
                         spinIt(event.target);
                         selectPopup(event.target);
                         lastTargetId = event.target.id;
+                        var t = setTimeout(function() {
+                            lastTargetId = null;
+                        }, 100);
                     }
                 };
             }, 100);
