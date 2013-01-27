@@ -155,7 +155,10 @@
             if (parentCtrlId != null) {
                 $("#detailsTemplate").tmpl(objTemplate).appendTo(parentCtrlId);
             }
-            if (focusCtrlName != null) $(focusCtrlName).focus();
+            if (focusCtrlName != null) {
+                $(focusCtrlName).focus();
+                $(focusCtrlName).val(m.currentSearchEan);
+            } 
         });
 
     };

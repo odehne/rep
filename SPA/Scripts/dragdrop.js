@@ -163,6 +163,12 @@ function touchHandler(event) {
 }
 
 function touchInit() {
+    // Falls ich mal ein Surface habe, wird das wichtig :D
+    // window.navigator.msPointerEnabled
+    var brow = $.browser;
+    if (brow.msie && parseInt(brow.version.slice(0, 1)) <= 1) {
+        return;
+    }
     document.addEventListener("touchstart", touchHandler, true);
     document.addEventListener("touchmove", touchHandler, true);
     document.addEventListener("touchend", touchHandler, true);

@@ -10,6 +10,15 @@
         color: #cacaca;
     } 
 
+    #ratingstars {
+        float: left; 
+        width:250px;     
+    }
+   
+    #comments {
+        float: none; 
+    }
+
 </style>
 
 <script id="detailsTemplate" type="text/x-jquery-tmpl">
@@ -40,18 +49,12 @@
         </div>
         <div id="ratings">
             <h1>Bewertung und Kommentare</h1>
-            <p>Bewertung
-                ${Ratings.RatingTable}
-            </p>
-            <table border="0">
-                <tr>
-                    <td> {{tmpl(Ratings) "#commentsTemplate"}}</td>
-                </tr>
-            </table>
-        </div>
+            <div id='ratingstars'>Bewertung
+                {{html RatingTable}}<br />
+            </div>
+          <div id='comments'>
+                {{html Comments}}
+            </div>
+        </div>       
     </div>
 </script>
-<script id="commentsTemplate" type="text/x-jquery-tmpl">
-    <td>${Comment}</td>
-</script>
-

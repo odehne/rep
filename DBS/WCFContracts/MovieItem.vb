@@ -42,8 +42,7 @@ Namespace WCFContracts.V1
             Me.UserID = t.UserID
             Me.Comment = t.Comment
             Me.Subject = t.Subject
-            Me.RatingTable = CreateTable(t.Rating)
-
+           
             Dim u As User = uBLL.GetUserByID(t.UserID)
 
             If Not u Is Nothing Then
@@ -52,26 +51,7 @@ Namespace WCFContracts.V1
 
         End Sub
 
-        Private Function CreateTable(ByVal Value As Integer) As String
-
-            Dim sb As New StringBuilder
-
-            sb.AppendLine("<table border='0'>")
-            sb.AppendLine("<tr>")
-            For i = 1 To 5
-                sb.AppendLine("<td>")
-                If i <= Value Then
-                    sb.AppendLine("<img src='../../content/images/star_yellow.png' height='8' width='8' alt='Yellow Star' />")
-                Else
-                    sb.AppendLine("<img src='../../content/images/star_grey.png' height='8' width='8' alt='Grey Star' />")
-                End If
-                sb.AppendLine("</td>")
-            Next
-            sb.AppendLine("</tr>")
-            sb.AppendLine("</table>")
-
-            Return sb.ToString
-        End Function
+    
     End Class
 
 
@@ -83,6 +63,68 @@ Namespace WCFContracts.V1
             Me.GenreIDs = New List(Of Integer)
             Me.GenreNames = New List(Of String)
         End Sub
+
+        Private Function CreateComments() As String
+            Dim sb As New StringBuilder
+            For Each c In Ratings
+                If Not String.IsNullOrEmpty(c.Comment) Then
+                    sb.AppendLine("<li>")
+                    sb.AppendLine("<p>" & c.UserName & ": " & c.Subject & "</p>")
+                    sb.AppendLine("<p>")
+                    sb.AppendLine(c.Comment)
+                    sb.AppendLine("</p>")
+                    sb.AppendLine("</li>")
+                End If
+            Next
+            Return sb.ToString
+        End Function
+
+        Private Function CreateTable(ByVal value As Integer) As String
+            Dim sb As New StringBuilder
+            For i = 1 To 5
+                If i <= value Then
+                    sb.AppendLine("<img src='content/images/star_yellow.png' height='16' width='16' alt='Yellow Star' />")
+                Else
+                    sb.AppendLine("<img src='content/images/star_grey.png' height='16' width='16' alt='Grey Star' />")
+                End If
+            Next
+            Return sb.ToString
+        End Function
+
+        <DataMember()> _
+        Public ReadOnly Property Comments As String
+            Get
+                Return CreateComments()
+            End Get
+        End Property
+        <DataMember()> _
+        Public ReadOnly Property RatingTable As String
+            Get
+                Dim i As Integer = 0
+                Dim stars As Integer = 0
+                If Ratings.Count > 0 Then
+
+                    For Each r In Ratings
+                        i += 1
+                        stars += r.Value
+                    Next
+                    Return CreateTable(Math.Floor(stars / i))
+                End If
+
+                Return CreateTable(0)
+            End Get
+        End Property
+
+        <DataMember()> _
+        Public ReadOnly Property RatingUsername As String
+            Get
+                If Not Ratings Is Nothing AndAlso Ratings.Count > 0 Then
+                    Return Ratings(0).UserName
+                End If
+                Return String.Empty
+            End Get
+        End Property
+
 
         <DataMember()> _
         Public ID As Integer = 0

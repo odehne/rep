@@ -3,6 +3,7 @@
     this.movies = [],
     this.friends = [],
     this.genres = [],
+    this.currentSearchEan = "";
     this.selectedMovie = null,
     this.drawMovies = function() {
         $("#ModelContainer").innerHTML = "";

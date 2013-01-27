@@ -1,0 +1,23 @@
+﻿<style>
+    h1 { margin-left: 0px;}
+ 
+       #ratingstars {
+        float: left; 
+        width:250px;     
+    }
+   
+    #comments {
+        float: none; 
+    }
+
+</style>
+
+<div id="ratings">
+    <h1>Bewertung und Kommentare</h1>
+        <div id='ratingstars'>Bewertung
+        {{html RatingTable}}<br />
+    </div>
+    <div id='comments'>
+        {{html Comments}}
+   </div>
+</div>       
