@@ -708,8 +708,13 @@ Public Class BLLItems
 
     Public Function GetLatestAdded() As List(Of MovieItem)
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
+            Dim d As DateTime = Now.AddDays(-20)
 
-            Dim source = (From r In db.tblItems Order By r.DateAdded Descending Select r).Take(15)
+            Dim source = (From r In db.tblItems Select r Where r.DateAdded >= d)
+
+            If source.Count <= 0 Then
+                source = (From r In db.tblItems Order By r.DateAdded Descending Select r).Take(15)
+            End If
 
             Return ConvertToList(source.ToList)
 
