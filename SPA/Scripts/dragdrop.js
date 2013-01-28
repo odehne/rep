@@ -16,8 +16,6 @@ var posy = 0;
 var posx_init = 0;
 var posy_init = 0;
 
-var lastTargetId = null;
-
 function dragDropInit() {
     // Initialisierung der Überwachung der Events
     document.onmousemove = drag;
@@ -144,15 +142,8 @@ function touchHandler(event) {
         if (type == "mouseup") {
             clickTimeout = setTimeout(function () {
                 if (!moved_touch) {
-                    alert("mouseup");
-                    if (lastTargetId != event.target.id) {
-                        spinIt(event.target);
-                        selectPopup(event.target);
-                        lastTargetId = event.target.id;
-                        var t = setTimeout(function() {
-                            lastTargetId = null;
-                        }, 100);
-                    }
+                    spinIt(event.target);
+                    selectPopup(event.target);
                 };
             }, 100);
         }

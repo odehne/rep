@@ -49,12 +49,20 @@
         </div>
         <div id="ratings">
             <h1>Bewertung und Kommentare</h1>
-            <div id='ratingstars'>Bewertung
-                {{html RatingTable}}<br />
-            </div>
-          <div id='comments'>
-                {{html Comments}}
-            </div>
-        </div>       
+            <table>
+                <tr>
+                    <td>${RatingsCount} Bewertung(en)</td>
+                    <td><div id='ratingstars'>
+                            {{html AggregatedStars}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        {{html Comments}}
+                    </td>
+                </tr>
+            </table>
+       </div>       
     </div>
 </script>

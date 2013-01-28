@@ -64,54 +64,54 @@ Namespace WCFContracts.V1
             Me.GenreNames = New List(Of String)
         End Sub
 
-        Private Function CreateComments() As String
-            Dim sb As New StringBuilder
-            For Each c In Ratings
-                If Not String.IsNullOrEmpty(c.Comment) Then
-                    sb.AppendLine("<li>")
-                    sb.AppendLine("<p>" & c.UserName & ": " & c.Subject & "</p>")
-                    sb.AppendLine("<p>")
-                    sb.AppendLine(c.Comment)
-                    sb.AppendLine("</p>")
-                    sb.AppendLine("</li>")
-                End If
-            Next
-            Return sb.ToString
-        End Function
-
-        Private Function CreateTable(ByVal value As Integer) As String
-            Dim sb As New StringBuilder
-            For i = 1 To 5
-                If i <= value Then
-                    sb.AppendLine("<img src='content/images/star_yellow.png' height='16' width='16' alt='Yellow Star' />")
-                Else
-                    sb.AppendLine("<img src='content/images/star_grey.png' height='16' width='16' alt='Grey Star' />")
-                End If
-            Next
-            Return sb.ToString
-        End Function
 
         <DataMember()> _
         Public ReadOnly Property Comments As String
             Get
-                Return CreateComments()
+                Dim sb As New StringBuilder
+                For Each c In Ratings
+                    If Not String.IsNullOrEmpty(c.Comment) Then
+                        sb.AppendLine("<li>")
+                        sb.AppendLine("<p>" & c.UserName & ": " & c.Subject & "<br />")
+                        sb.AppendLine(c.Comment)
+                        sb.AppendLine("</p><br />")
+                        sb.AppendLine("</li>")
+                    End If
+                Next
+                Return sb.ToString
             End Get
         End Property
+
         <DataMember()> _
-        Public ReadOnly Property RatingTable As String
+        Public ReadOnly Property RatingsCount As Integer
+            Get
+                Return Me.Ratings.Count
+            End Get
+        End Property
+
+        <DataMember()> _
+        Public ReadOnly Property AggregatedStars As String
             Get
                 Dim i As Integer = 0
-                Dim stars As Integer = 0
-                If Ratings.Count > 0 Then
+                Dim strs As Integer = 0
+                Dim value As Integer = 0
+                Dim sb As New StringBuilder
 
+                If Ratings.Count > 0 Then
                     For Each r In Ratings
                         i += 1
-                        stars += r.Value
+                        strs += r.Value
                     Next
-                    Return CreateTable(Math.Floor(stars / i))
+                    value = Math.Floor(strs / i)
+                    For i = 1 To 5
+                        If i <= value Then
+                            sb.AppendLine("<img src='content/images/star_yellow.png' height='16' width='16' alt='Yellow Star' />")
+                        Else
+                            sb.AppendLine("<img src='content/images/star_grey.png' height='16' width='16' alt='Grey Star' />")
+                        End If
+                    Next
                 End If
-
-                Return CreateTable(0)
+                Return sb.ToString
             End Get
         End Property
 
