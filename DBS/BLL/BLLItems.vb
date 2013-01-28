@@ -407,8 +407,13 @@ Public Class BLLItems
         Dim lst = New List(Of MovieItem)
         Dim r As New System.Random()
         Dim i As Integer = 1
+
+        If MovieIds.Length = 0 Then
+            Return lst
+        End If
+
         While i <= 15
-            Dim id As Integer = r.Next(1, MovieIds.Length)
+            Dim id As Integer = r.Next(0, MovieIds.Length)
             Dim mov = GetItemByID(id)
             If Not String.IsNullOrEmpty(mov.Title) Then
                 lst.Add(mov)
