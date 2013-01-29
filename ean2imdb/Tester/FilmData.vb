@@ -24,7 +24,6 @@ Public Class FilmData
         If Me.LastResult = 0 Then
             Me.Name = HttpUtility.HtmlDecode(searchEanResult.Ofdbgw.Resultat.Eintrag.First.Titel_De)
             Me.OfDbId = searchEanResult.Ofdbgw.Resultat.Eintrag.First.FilmId
-            ImdbIdSearch()
         Else
             ErrorMessage = String.Format("{0} Not found: {1} - {2}", Me.Ean, searchEanResult.Ofdbgw.Status.RCode, searchEanResult.Ofdbgw.Status.RCodeDesc)
         End If
