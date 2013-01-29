@@ -82,20 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app.css" />
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dialog-mng.css" />
     <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\nortago.jpg" />
     <Content Include="Content\images\star_grey.png" />
     <Content Include="Content\images\star_yellow.png" />
-    <Content Include="Content\jquery.mobile-1.2.0.css" />
-    <Content Include="Content\jquery.mobile-1.2.0.min.css" />
-    <Content Include="Content\jquery.mobile.structure-1.2.0.css" />
-    <Content Include="Content\jquery.mobile.structure-1.2.0.min.css" />
-    <Content Include="Content\jquery.mobile.theme-1.2.0.css" />
-    <Content Include="Content\jquery.mobile.theme-1.2.0.min.css" />
     <Content Include="passwordreset.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
