@@ -1,7 +1,7 @@
 ﻿
 Imports System.Net
 Imports Newtonsoft.Json
-Imports Tester.ServiceResultClasses
+Imports ean2imdb.ServiceResultClasses
 Imports System.Web
 
 Public Class FilmData
@@ -38,7 +38,7 @@ Public Class FilmData
 
             If elem.<status>.<rcode>.Value <> "0" Then
                 Me.LastResult = elem.<status>.<rcode>.Value
-                ErrorMessage = String.Format("Failed to get Imdb Id from {0}", Me.OfDbId)
+                ErrorMessage = String.Format("Could not get Imdb Id from {0}", Me.OfDbId)
                 Return
             End If
 

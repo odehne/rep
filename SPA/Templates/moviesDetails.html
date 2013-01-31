@@ -6,6 +6,15 @@
         text-decoration:none;
     }
 
+
+    #details {
+        display: block; 
+    }
+
+    #ratings {
+        display: none;
+    }
+
     a.actor:hover, a.actor:visited {
         color: #cacaca;
     } 
@@ -39,14 +48,6 @@
                 <b>Verliehen an</b> ${BorrowedByName}</p>
             <br />
             <p>${Description}</p>
-            <table border="0">
-                <tr>
-                    <td><a href="#" class="button" onmouseup="m.showLentTo();" style="width:100px" id="btnLentTo">Verliehen an</a></td>
-                    <td><a href="#" class="button" onmouseup="m.returnMovie()" style="width:100px">Zurück erhalten</a></td>
-                    <td><a href="#" class="button" onmouseup="m.borrowMovie();" style="width:100px">Ausleihen</a></td>
-                    <td><a href="#" class="button" onmouseup="m.showRating();" style="width:25px">&gt;&gt;</a></td>
-                </tr>
-            </table>
         </div>
         <div id="ratings">
             <h1>Bewertung und Kommentare</h1>
@@ -64,6 +65,16 @@
                     </td>
                 </tr>
             </table>
-       </div>       
+        </div>
+        <div id="controls">
+            <table border="0">
+                <tr>
+                    <td><a href="#" class="button" onmouseup="m.showLentTo();" style="width:100px" id="btnLentTo">Verliehen an</a></td>
+                    <td><a href="#" class="button" onmouseup="m.returnMovie()" style="width:100px">Zurück erhalten</a></td>
+                    <td><a href="#" class="button" onmouseup="m.borrowMovie();" style="width:100px">Ausleihen</a></td>
+                    <td><a href="#" class="button" onmouseup="m.toggleDetailsView();" style="width:25px">&gt;&gt;</a></td>
+                </tr>
+            </table>
+        </div>       
     </div>
 </script>

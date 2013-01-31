@@ -32,7 +32,7 @@ Public Class DbUpdater
                     conn.Open()
                     updateConn.Open()
                 Catch ex As Exception
-                    RaiseEvent StatusChange(StatusE.Failed, "Failed to connect to database [" & ex.Message & "]")
+                    RaiseEvent StatusChange(StatusE.Failed, "Database connection issue [" & ex.Message & "]")
                     Return
                 End Try
 
@@ -63,7 +63,7 @@ Public Class DbUpdater
                     Try
                         updateCmd.ExecuteNonQuery()
                     Catch ex As Exception
-                        RaiseEvent StatusChange(DbUpdater.StatusE.Failed, String.Format("Failed to update database {0}", ex.Message))
+                        RaiseEvent StatusChange(DbUpdater.StatusE.Failed, String.Format("Database update issue {0}", ex.Message))
                     End Try
 
                     Threading.Thread.Sleep(1000)
@@ -89,7 +89,7 @@ Public Class DbUpdater
                     conn.Open()
                     updateConn.Open()
                 Catch ex As Exception
-                    RaiseEvent StatusChange(StatusE.Failed, "Failed to connect to database [" & ex.Message & "]")
+                    RaiseEvent StatusChange(StatusE.Failed, "Database connection issue. Please check connection string [" & ex.Message & "]")
                     Return
                 End Try
 
@@ -120,7 +120,7 @@ Public Class DbUpdater
 
 
                   
-                    Threading.Thread.Sleep(1000)
+                    Threading.Thread.Sleep(2500)
                 End While
 
             End Using

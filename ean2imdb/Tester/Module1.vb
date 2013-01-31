@@ -13,14 +13,20 @@ Public Module Module1
         Dim updater As DbUpdater = New DbUpdater(args(2))
         AddHandler updater.StatusChange, AddressOf OnStatusChange
 
-        If args(1).ToLower = "imdb" Then
-            updater.UpdateImdbId()
-        ElseIf args(1).ToLower = "ofdb" Then
-            updater.UpdateOfDbId()
-        ElseIf args(1).ToLower = "both" Then
-            updater.UpdateImdbId()
-            updater.UpdateOfDbId()
-        End If
+        Do
+
+            If args(1).ToLower = "imdb" Then
+                updater.UpdateImdbId()
+            ElseIf args(1).ToLower = "ofdb" Then
+                updater.UpdateOfDbId()
+            ElseIf args(1).ToLower = "both" Then
+                updater.UpdateImdbId()
+                updater.UpdateOfDbId()
+            End If
+            Console.WriteLine("Retry in 5 minutes ...")
+            Threading.Thread.Sleep(New TimeSpan(0, 0, 5, 0))
+        Loop
+
 
     End Sub
 

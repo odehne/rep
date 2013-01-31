@@ -120,6 +120,7 @@
     <Content Include="Scripts\jQuery.tmpl.min.js" />
     <Content Include="Scripts\types.js" />
     <Content Include="Templates\movieSearch.html" />
+    <Content Include="Templates\movieTrailer.html" />
     <Content Include="Templates\register.html" />
     <Content Include="Templates\welcome.html" />
     <Content Include="Web.config" />

@@ -28,6 +28,7 @@ Namespace WCFContracts.V1
         <DataMember()> _
         Public RatingTable As String
 
+      
         Public Sub New()
 
         End Sub
@@ -57,6 +58,9 @@ Namespace WCFContracts.V1
 
     <DataContract(Name:="MovieItem")> _
     Public Class MovieItem
+
+        <DataMember()> _
+        Public ImdbIdb As String
 
         Public Sub New()
             Me.Ratings = New List(Of Rating)
@@ -112,6 +116,16 @@ Namespace WCFContracts.V1
                     Next
                 End If
                 Return sb.ToString
+            End Get
+        End Property
+
+        <DataMember()> _
+        Public ReadOnly Property TrailerUrl As String
+            Get
+                If Not String.IsNullOrEmpty(ImdbIdb) Then
+                    Return "http://www.traileraddict.com/emd/" & ImdbIdb
+                End If
+                Return String.Empty
             End Get
         End Property
 

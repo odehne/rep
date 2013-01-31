@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Tester", "Tester\Tester.vbproj", "{FBC27EDA-4DCC-47FC-9AEF-C01707BBA577}"
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ean2imdb", "Tester\ean2imdb.vbproj", "{FBC27EDA-4DCC-47FC-9AEF-C01707BBA577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
