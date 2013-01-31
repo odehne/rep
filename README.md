@@ -18,5 +18,3 @@ The service component can utilize a web API by Amazon to retrieve information ab
 
 Have fun,
 Oliver
-
-Tobi
