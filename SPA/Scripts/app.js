@@ -188,10 +188,6 @@
             }
         };
     },
-    this.toggleDetailsView = function () {
-       $("#details").toggle();
-       $("#ratings").toggle();
-    },
     this.borrowMovie = function () {
         if (!$.cookie('movie-user-name')) {
                 dlg.showLogin($('#details'), $('#detailsContainer'));

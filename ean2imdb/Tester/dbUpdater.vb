@@ -131,4 +131,52 @@ Public Class DbUpdater
     End Sub
 
 
+    Public Sub UpdateTrailer()
+        Using conn As SqlConnection = New SqlConnection(ConnString)
+
+            Dim selectQuery As String = "Select imdbid from tblitems where ean <> '' and trailer is null and not imdbid is null"
+
+            Using updateConn As SqlConnection = New SqlConnection(ConnString)
+
+                Try
+                    conn.Open()
+                    updateConn.Open()
+                Catch ex As Exception
+                    RaiseEvent StatusChange(StatusE.Failed, "Database connection issue. Please check connection string [" & ex.Message & "]")
+                    Return
+                End Try
+
+                Dim cmd As New SqlCommand(selectQuery, conn)
+                Dim reader As SqlDataReader = cmd.ExecuteReader()
+                While reader.Read()
+                    Dim imdbId As String = reader("imdbid")
+                    Dim tInfo As New TrailerInfo(imdbId, 420)
+                    Dim updateCmd As New SqlCommand()
+                    updateCmd.Connection = updateConn
+
+                    If tInfo.Trailers.Count = 0 Then
+                        RaiseEvent StatusChange(DbUpdater.StatusE.Failed, String.Format("{0} returned no trailer :/", imdbId))
+                    Else
+                        updateCmd.CommandText = "update tblItems set trailer=@trailer where imdbid=@imdbid"
+                        updateCmd.Parameters.AddWithValue("trailer", tInfo.Trailers(0))
+                        updateCmd.Parameters.AddWithValue("imdbId", ImDbId)
+                        Try
+                            updateCmd.ExecuteNonQuery()
+                            RaiseEvent StatusChange(DbUpdater.StatusE.Ok, String.Format("Found a trailer for {0}", imdbId))
+                        Catch ex As Exception
+                            RaiseEvent StatusChange(DbUpdater.StatusE.Failed, String.Format("Update trailer record {0}", ex.Message))
+                        End Try
+                    End If
+
+
+
+
+                    Threading.Thread.Sleep(200)
+                End While
+
+            End Using
+
+        End Using
+
+    End Sub
 End Class

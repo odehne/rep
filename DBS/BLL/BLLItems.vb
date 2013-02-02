@@ -592,6 +592,10 @@ Public Class BLLItems
             .BorrowCount = r.BorrowCount
             .DateAdded = r.DateAdded
 
+            If Not r.Trailer Is Nothing Then
+                .Trailer = r.Trailer
+            End If
+
             If .BorrowedByID > 0 Then
                 Try
                     .BorrowedByName = r.tblUser1.Username
@@ -620,6 +624,8 @@ Public Class BLLItems
 
             End Try
             .OwnerID = r.OwnerID
+
+
 
             Try
                 .OwnerName = r.tblUser.Username

@@ -8,7 +8,7 @@
     this.injectPopupContainer = function() {
         if ($("#dialog-box") != undefined) {
             $("body").append('<div id="dialog-overlay">' +
-                '</div><div id="dialog-box"><div class="dialog-content"><div id="dialog-message"></div><a href="#" class="button" onmouseup="$(\'#dialog-overlay, #dialog-box\').remove()">Schließen</a></div></div>');
+                '</div><div id="dialog-box"><div id="dialog-content" class="dialog-content"><div id="dialog-message"></div><a href="#" class="button" onmouseup="$(\'#dialog-overlay, #dialog-box\').remove()">Schließen</a></div></div>');
         }
     },
     this.popupWelcome = function() {

@@ -80,6 +80,7 @@
       <Column Name="BorrowCount" Type="System.Int32" DbType="Int Not Null" CanBeNull="false" />
       <Column Name="DateAdded" Type="System.DateTime" DbType="datetime Not NULL" CanBeNull="false" />
       <Column Name="GenreIDs" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Trailer" Type="System.String" DbType="XML Null" CanBeNull="true" />
       <Association Name="tblItem_tblImage" Member="tblImages" ThisKey="ID" OtherKey="ItemID" Type="tblImage" />
       <Association Name="tblItem_tblRating" Member="tblRatings" ThisKey="ID" OtherKey="ItemID" Type="tblRating" />
       <Association Name="tblGenre_tblItem" Member="tblGenre" ThisKey="GenreID" OtherKey="ID" Type="tblGenre" IsForeignKey="true" />

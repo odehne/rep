@@ -6,7 +6,7 @@ Public Module Module1
         Dim args = Environment.GetCommandLineArgs()
 
         If args.Length <= 2 Then
-            Console.WriteLine("usage: ean2imdb <imdb|ofdb|both> {0}connection string{0}", Chr(34))
+            Console.WriteLine("usage: ean2imdb <imdb|ofdb|trailer|all> {0}connection string{0}", Chr(34))
             End
         End If
 
@@ -19,9 +19,12 @@ Public Module Module1
                 updater.UpdateImdbId()
             ElseIf args(1).ToLower = "ofdb" Then
                 updater.UpdateOfDbId()
-            ElseIf args(1).ToLower = "both" Then
+            ElseIf args(1).ToLower = "trailer" Then
+                updater.UpdateTrailer()
+            ElseIf args(1).ToLower = "all" Then
                 updater.UpdateImdbId()
                 updater.UpdateOfDbId()
+                updater.UpdateTrailer()
             End If
             Console.WriteLine("Retry in 5 minutes ...")
             Threading.Thread.Sleep(New TimeSpan(0, 0, 5, 0))

@@ -90,6 +90,7 @@
     font-family:arial;
     font-size:11px; 
 }
+
  
 a.button {
     /* styles for button */
@@ -102,6 +103,7 @@ a.button {
     text-decoration: none;
     font-weight: bold;
     line-height: 1;
+    float: right;
      
     /* button color */
     background-color: #e33100;
@@ -201,7 +203,6 @@ a.button:hover {
     height:50px;
 }
 
-
 #detailsContainer {
     width: 770px;
     height: 470px;
@@ -215,10 +216,10 @@ a.button:hover {
     height:470px; 
     width:330px;
 }
-#details, #register, #login, #ratings {
+
+#details, #register, #login, #ratings, #trailer {
     padding-top: 5px;
     padding-left: 340px; 
     padding-right: 10px; 
-
     font-size: 12px;
 }

@@ -102,7 +102,6 @@
     <Content Include="Templates\genresDetails.html" />
     <Content Include="Templates\lentToSelector.html" />
     <Content Include="Templates\login.html" />
-    <Content Include="Templates\movieRatings.html" />
     <Content Include="Templates\moviesDetails.html" />
     <Content Include="Index.html" />
     <Content Include="Scripts\app.js" />

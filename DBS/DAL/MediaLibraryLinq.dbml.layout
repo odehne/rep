@@ -45,55 +45,55 @@
         <classShapeMoniker Id="4a6d2940-ba0b-46c7-b50d-f66458c487cb" />
       </nodes>
     </associationConnector>
-    <classShape Id="c63022ac-d205-42ea-93dd-3e0c0435f763" absoluteBounds="11.875, 1.5, 2, 5.6169254557291657">
+    <classShape Id="c63022ac-d205-42ea-93dd-3e0c0435f763" absoluteBounds="11.875, 1.5, 2, 5.8092268880208326">
       <DataClassMoniker Name="/MediaLibraryLinqDataContext/tblItem" />
       <nestedChildShapes>
-        <elementListCompartment Id="fbbafe3e-b1fd-4c8c-a891-185776a6baa2" absoluteBounds="11.89, 1.96, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fbbafe3e-b1fd-4c8c-a891-185776a6baa2" absoluteBounds="11.89, 1.96, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(14.625 : 6.93346272786458); (13.875 : 6.93346272786458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(14.625 : 7.02961344401042); (13.875 : 7.02961344401042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblGenre/tblGenre_tblItem" />
       <nodes>
         <classShapeMoniker Id="0cc077b9-9ef1-488a-978f-b0a2cfd8298a" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.875 : 6.34375); (10.5104166666667 : 6.34375 : JumpStart); (10.6770833333333 : 6.34375 : JumpEnd); (11.875 : 6.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.875 : 6.34375); (11.875 : 6.34375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblMediaFormat/tblMediaFormat_tblItem" />
       <nodes>
         <classShapeMoniker Id="67014c2c-7b75-448b-baba-72ee162048c3" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.875 : 4.58931921799004); (11.875 : 4.58931921799004)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.875 : 4.73326730449751); (11.875 : 4.73326730449751)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblMediaType/tblMediaType_tblItem" />
       <nodes>
         <classShapeMoniker Id="a493d2c4-ccb1-4fe1-8472-2092748bd01e" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.125 : 2.91429768880208); (11.875 : 2.91429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10.125 : 2.91429768880208); (11.875 : 2.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblParticipant/tblParticipant_tblItem" />
       <nodes>
         <classShapeMoniker Id="4a6d2940-ba0b-46c7-b50d-f66458c487cb" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.125 : 2.34286163330078); (11.875 : 2.34286163330078)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10.125 : 2.31428983052571); (11.875 : 2.31428983052571)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblParticipant/tblParticipant_tblItem1" />
       <nodes>
         <classShapeMoniker Id="4a6d2940-ba0b-46c7-b50d-f66458c487cb" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.125 : 3.48573374430338); (11.875 : 3.48573374430338)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10.125 : 3.51430554707845); (11.875 : 3.51430554707845)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblParticipant/tblParticipant_tblItem2" />
       <nodes>
         <classShapeMoniker Id="4a6d2940-ba0b-46c7-b50d-f66458c487cb" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.125 : 3.20001571655273); (11.875 : 3.20001571655273)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10.125 : 3.21430161794026); (11.875 : 3.21430161794026)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblParticipant/tblParticipant_tblItem3" />
       <nodes>
         <classShapeMoniker Id="4a6d2940-ba0b-46c7-b50d-f66458c487cb" />
@@ -106,14 +106,14 @@
         <elementListCompartment Id="4e3f0fc4-921e-4b8d-9e9a-818e919a7d48" absoluteBounds="17.515, 3.585, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(17.5 : 3.53125); (13.875 : 3.53125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(17.5 : 3.53125); (13.875 : 3.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblUser/tblUser_tblItem" />
       <nodes>
         <classShapeMoniker Id="2e942d34-f243-44a9-8c3f-082b919f9efd" />
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(17.5 : 6.26044840494792); (13.875 : 6.26044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(17.5 : 6.26044840494792); (13.875 : 6.26044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblUser/tblUser_tblItem1" />
       <nodes>
         <classShapeMoniker Id="2e942d34-f243-44a9-8c3f-082b919f9efd" />
@@ -146,7 +146,7 @@
         <classShapeMoniker Id="181d8d4c-6c6b-4a30-9482-c4ed974a1ec2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.125 : 2.62857966105143); (11.875 : 2.62857966105143)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10.125 : 2.6142937596639); (11.875 : 2.6142937596639)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblParticipant/tblParticipant_tblItem4" />
       <nodes>
         <classShapeMoniker Id="4a6d2940-ba0b-46c7-b50d-f66458c487cb" />
@@ -159,7 +159,7 @@
         <elementListCompartment Id="d80e34b8-2048-46d8-9ae7-2e8255ced738" absoluteBounds="14.765, 4.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(13.875 : 4.88544840494792); (14.75 : 4.88544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(13.875 : 4.88544840494792); (14.75 : 4.88544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblItem/tblItem_tblImage" />
       <nodes>
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />
@@ -172,7 +172,7 @@
         <elementListCompartment Id="17bb4318-0483-4bd9-b3ab-81b5bbfb98b6" absoluteBounds="9.015, 7.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(11.875 : 5.46653460899502); (10.59375 : 5.46653460899502); (10.59375 : 6.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11.875 : 7.09211344401042); (11 : 7.09211344401042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MediaLibraryLinqDataContext/tblItem/tblItem_tblRating" />
       <nodes>
         <classShapeMoniker Id="c63022ac-d205-42ea-93dd-3e0c0435f763" />

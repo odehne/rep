@@ -5,13 +5,14 @@
         color: #f0f0f0;
         text-decoration:none;
     }
-
+    table td { height: 15px;}
+    
 
     #details {
         display: block; 
     }
 
-    #ratings {
+    #ratings, #trailer {
         display: none;
     }
 
@@ -23,12 +24,44 @@
         float: left; 
         width:250px;     
     }
-   
+   #controls {
+       height: 50px;
+       width: 700px;
+   }
     #comments {
         float: none; 
     }
 
+    #dialog-content {
+        width: 730px;
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+
 </style>
+
+<script type="text/javascript">
+    function showComments() {
+        $("#trailer,#details").css("display", "none");
+        $("#ratings").css("display", "block");
+    }
+    function showTrailer() {
+        $("#details,#ratings").css("display", "none");
+        $("#trailer").css("display", "block");
+    }
+    function showDetails() {
+        $("#trailer,#ratings").css("display", "none");
+        $("#details").css("display", "block");
+    }
+
+    $("#dialog-content").append('<a class="button" onmouseup="m.showLentTo();" style="width:100px;margin-right:5px;" id="btnLentTo">Verliehen</a>');
+    $("#dialog-content").append('<a class="button" onmouseup="m.returnMovie()" style="width:100px;margin-right:5px;">Zurückerhalten</a>');
+    $("#dialog-content").append('<a class="button" onmouseup="m.borrowMovie();" style="width:70px;margin-right:5px;">Ausleihen</a>');
+    $("#dialog-content").append('<a class="button" onmouseup="showComments();" style="width:70px;margin-right:5px;">Kommentare</a>');
+    $("#dialog-content").append('<a class="button" onmouseup="showTrailer();" style="width:70px;margin-right:5px;">Trailer</a>');
+    $("#dialog-content").append('<a class="button" onmouseup="showDetails();" style="width:70px;margin-right:5px;">Details</a>');
+    
+</script>
 
 <script id="detailsTemplate" type="text/x-jquery-tmpl">
     <div id="detailsContainer">
@@ -65,16 +98,25 @@
                     </td>
                 </tr>
             </table>
+        </div>  
+        <div id="trailer">
+            <h1>Movie Trailer</h1>
+            {{html Trailer}}
         </div>
-        <div id="controls">
+        
+
+    <!--    <div id="controls">
             <table border="0">
                 <tr>
-                    <td><a href="#" class="button" onmouseup="m.showLentTo();" style="width:100px" id="btnLentTo">Verliehen an</a></td>
-                    <td><a href="#" class="button" onmouseup="m.returnMovie()" style="width:100px">Zurück erhalten</a></td>
-                    <td><a href="#" class="button" onmouseup="m.borrowMovie();" style="width:100px">Ausleihen</a></td>
-                    <td><a href="#" class="button" onmouseup="m.toggleDetailsView();" style="width:25px">&gt;&gt;</a></td>
+                    <td><a href="#" class="button" onmouseup="m.showLentTo();" style="width:100px" id="btnLentTo">Verliehen</a></td>
+                    <td><a href="#" class="button" onmouseup="m.returnMovie()" style="width:100px">Zurückerhalten</a></td>
+                    <td><a href="#" class="button" onmouseup="m.borrowMovie();" style="width:70px">Ausleihen</a></td>
+                    <td><a href="#" class="button" onmouseup="showComments();" style="width:70px">Kommentare</a></td>
+                    <td><a href="#" class="button" onmouseup="showTrailer();" style="width:70px">Trailer</a></td>
+                    <td><a href="#" class="button" onmouseup="showDetails();" style="width:70px">Details</a></td>
                 </tr>
             </table>
         </div>       
+    -->  
     </div>
 </script>

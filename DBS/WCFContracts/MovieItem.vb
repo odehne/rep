@@ -120,14 +120,7 @@ Namespace WCFContracts.V1
         End Property
 
         <DataMember()> _
-        Public ReadOnly Property TrailerUrl As String
-            Get
-                If Not String.IsNullOrEmpty(ImdbIdb) Then
-                    Return "http://www.traileraddict.com/emd/" & ImdbIdb
-                End If
-                Return String.Empty
-            End Get
-        End Property
+        Public Trailer As String
 
         <DataMember()> _
         Public ReadOnly Property RatingUsername As String

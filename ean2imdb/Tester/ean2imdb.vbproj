@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="FilmData.vb" />
     <Compile Include="ServiceResultClasses.vb" />
+    <Compile Include="TrailerInfo.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
