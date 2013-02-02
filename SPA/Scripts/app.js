@@ -37,7 +37,7 @@
         this.placeObjectOnCanvas($("#cmd_AddMovies"));
     },
     this.placeObjectOnCanvas = function(o) {
-        o.css("left", getRandomNumber(200, 500));
+        o.css("left", getRandomNumber(200, 800));
         o.css("top", getRandomNumber(100, 400));
         var degree = getRandomNumber(1, 270);
         o.css({ WebkitTransform: 'rotate(' + degree + 'deg)' });

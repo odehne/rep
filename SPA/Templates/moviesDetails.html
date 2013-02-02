@@ -32,34 +32,31 @@
         float: none; 
     }
 
-    #dialog-content {
-        width: 730px;
-        margin-left: auto; 
-        margin-right: auto; 
-    }
-
 </style>
 
 <script type="text/javascript">
-    function showComments() {
-        $("#trailer,#details").css("display", "none");
-        $("#ratings").css("display", "block");
-    }
-    function showTrailer() {
-        $("#details,#ratings").css("display", "none");
-        $("#trailer").css("display", "block");
-    }
-    function showDetails() {
-        $("#trailer,#ratings").css("display", "none");
-        $("#details").css("display", "block");
+
+    function showView(index) {
+        if (index === 1) {
+            $("#trailer,#details").css("display", "none"); // 1 = ratings
+            $("#ratings").css("display", "block");
+        }else if (index === 2) {
+            $("#ratings,#details").css("display", "none"); // 2 = trailer
+            $("#trailer").css("display", "block");
+        } else if (index === 3) {
+            $("#trailer,#ratings").css("display", "none"); // 3 = details
+            $("#details").css("display", "block");
+        } else {
+            $("#trailer,#details,#ratings").css("display", "none");
+        }
     }
 
-    $("#dialog-content").append('<a class="button" onmouseup="m.showLentTo();" style="width:100px;margin-right:5px;" id="btnLentTo">Verliehen</a>');
-    $("#dialog-content").append('<a class="button" onmouseup="m.returnMovie()" style="width:100px;margin-right:5px;">Zurückerhalten</a>');
-    $("#dialog-content").append('<a class="button" onmouseup="m.borrowMovie();" style="width:70px;margin-right:5px;">Ausleihen</a>');
-    $("#dialog-content").append('<a class="button" onmouseup="showComments();" style="width:70px;margin-right:5px;">Kommentare</a>');
-    $("#dialog-content").append('<a class="button" onmouseup="showTrailer();" style="width:70px;margin-right:5px;">Trailer</a>');
-    $("#dialog-content").append('<a class="button" onmouseup="showDetails();" style="width:70px;margin-right:5px;">Details</a>');
+    $("#buttonFooter").append('<a class="button" onmouseup="showView(0);m.showLentTo();" style="width:100px;margin-right:5px;" id="btnLentTo">Verliehen</a>');
+    $("#buttonFooter").append('<a class="button" onmouseup="showView(0);m.returnMovie()" style="width:100px;margin-right:5px;">Zurückerhalten</a>');
+    $("#buttonFooter").append('<a class="button" onmouseup="showView(0);m.borrowMovie();" style="width:70px;margin-right:5px;">Ausleihen</a>');
+    $("#buttonFooter").append('<a class="button" onmouseup="showView(1);" style="width:70px;margin-right:5px;">Kommentare</a>');
+    $("#buttonFooter").append('<a class="button" onmouseup="showView(2);" style="width:70px;margin-right:5px;">Trailer</a>');
+    $("#buttonFooter").append('<a class="button" onmouseup="showView(3);" style="width:70px;margin-right:5px;">Details</a>');
     
 </script>
 

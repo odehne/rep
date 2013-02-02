@@ -168,10 +168,8 @@ Public Class DbUpdater
                         End Try
                     End If
 
-
-
-
                     Threading.Thread.Sleep(200)
+
                 End While
 
             End Using
