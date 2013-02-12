@@ -141,7 +141,7 @@ Public Class Items
                 Return
             End If
             Dim iBll As New BLLItems
-            Dim ret = iBll.UpdateBorrow(id, friendId, Now, False)
+            Dim ret = iBll.UpdateBorrow(id, lentTo, Now, False)
             context.Response.Write(Tools.Tojson(ret))
             Return
         End If

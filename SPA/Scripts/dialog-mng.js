@@ -85,8 +85,8 @@
             $("#lentToTemplate").tmpl(m.friends).appendTo($("#friendsList"));
         });
     },
-    this.lentTo=function(friendId) {
-        $.getJSON(m.serviceUrl + "items?id=" + m.selectedMovie + "&lentTo=" + friendId, function (data) {
+    this.lentTo = function (friendId) {
+        $.getJSON(m.serviceUrl + "items?id=" + m.selectedMovie.ID + "&lentTo=" + friendId, function (data) {
             if (data == "OK") {
                 alert("Der Film wurde als ausgeliehen vermerkt.");
             } else {
