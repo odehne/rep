@@ -46,6 +46,7 @@ function dragstop() {
         selectPopup(dragObj);
     }
     dragObj = null;
+    return false;
 }
 
 function spinIt(dragObj) {
@@ -106,6 +107,7 @@ function drag(ereignis) {
         dragObj.style.left = (posx - dragx) + "px";
         dragObj.style.top = (posy - dragy) + "px";
     }
+    return false;
 }
 
 function touchHandler(event) {
