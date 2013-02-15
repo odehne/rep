@@ -16,6 +16,10 @@
     }
 </style>
 
+    <div class="dialog-content">
+            <div id="dialog-message">
+                <!-- Template Kram kommt hier rein .... -->
+
 <h1>Genre.</h1>
 <h2>Bitte wähle ein Genre aus der Liste aus, dann aktualisiert sich die Hauptansicht und Filme passend zu diesem Genre werden geladen.</h2>
 
@@ -37,3 +41,17 @@
         $('#dialog-overlay, #dialog-box').remove();
     };
 </script>    
+                         </div>
+            <table border="0">
+                <tr>
+                    <td align="center" width="770px">
+                        
+                        <!-- Buttons kommen hier rein .... -->
+                        <div id="buttonFooter">
+                            <a href="#" class="button" onmouseup="$('#dialog-overlay, #dialog-box').remove()">Schließen</a>
+                        </div>
+                        <!-- Buttons kommen hier ^^ rein .... -->
+                    </td>
+                </tr>
+            </table>
+        </div>

@@ -30,55 +30,72 @@
 
 </style>
 
+<div class="dialog-content">
+    <div id="dialog-message">
+        <!-- Template Kram kommt hier rein .... -->
 
+        <h1>Cast.</h1>
+        <h2>Um die Filme bestimmter Schauspieler oder Regisseure zu sehen, schränke die Suche erst durch den Anfangsbuchstaben ein, dann wähle den Namen aus der Liste.</h2>
 
-<h1>Cast.</h1>
-<h2>Um die Filme bestimmter Schauspieler oder Regisseure zu sehen, schränke die Suche erst durch den Anfangsbuchstaben ein, dann wähle den Namen aus der Liste.</h2>
-
-<div id="alphabet">
-    <table>
+        <div id="alphabet">
+            <table>
+                <tr>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('a', 'actorsList');">a</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('b', 'actorsList');">b</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('c', 'actorsList');">c</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('d', 'actorsList');">d</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('e', 'actorsList');">e</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('f', 'actorsList');">f</a></td>
+                </tr>        
+                <tr>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('g', 'actorsList');">g</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('h', 'actorsList');">h</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('i', 'actorsList');">i</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('j', 'actorsList');">j</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('k', 'actorsList');">k</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('l', 'actorsList');">l</a></td>
+                </tr>        
+                <tr>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('m', 'actorsList');">m</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('n', 'actorsList');">n</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('o', 'actorsList');">o</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('p', 'actorsList');">p</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('q', 'actorsList');">q</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('r', 'actorsList');">r</a></td>
+                </tr>        
+                <tr>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('s', 'actorsList');">s</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('t', 'actorsList');">t</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('u', 'actorsList');">u</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('v', 'actorsList');">v</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('w', 'actorsList');">w</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('x', 'actorsList');">x</a></td>
+                </tr>        
+                <tr>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('y', 'actorsList');">y</a></td>
+                    <td><a href="#"  class="button" onmouseup="m.loadActors('z', 'actorsList');">z</a></td>
+                </tr>        
+            </table>
+        </div>
+        <div id="listContainer">
+            <select id="actorsList" size="8">
+            </select>
+        </div>
+    </div>
+    <table border="0">
         <tr>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('a', 'actorsList');">a</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('b', 'actorsList');">b</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('c', 'actorsList');">c</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('d', 'actorsList');">d</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('e', 'actorsList');">e</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('f', 'actorsList');">f</a></td>
-        </tr>        
-        <tr>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('g', 'actorsList');">g</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('h', 'actorsList');">h</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('i', 'actorsList');">i</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('j', 'actorsList');">j</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('k', 'actorsList');">k</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('l', 'actorsList');">l</a></td>
-        </tr>        
-        <tr>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('m', 'actorsList');">m</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('n', 'actorsList');">n</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('o', 'actorsList');">o</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('p', 'actorsList');">p</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('q', 'actorsList');">q</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('r', 'actorsList');">r</a></td>
-        </tr>        
-        <tr>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('s', 'actorsList');">s</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('t', 'actorsList');">t</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('u', 'actorsList');">u</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('v', 'actorsList');">v</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('w', 'actorsList');">w</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('x', 'actorsList');">x</a></td>
-        </tr>        
-        <tr>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('y', 'actorsList');">y</a></td>
-            <td><a href="#"  class="button" onmouseup="m.loadActors('z', 'actorsList');">z</a></td>
-        </tr>        
-      </table>
+            <td align="center" width="770px">
+                        
+                <!-- Buttons kommen hier rein .... -->
+                <div id="buttonFooter">
+                    <a href="#" class="button" onmouseup="$('#dialog-overlay, #dialog-box').remove()">Schließen</a>
+                </div>
+                <!-- Buttons kommen hier ^^ rein .... -->
+            </td>
+        </tr>
+    </table>
 </div>
-<div id="listContainer">
-    <select id="actorsList" size="8">
-    </select>
-</div>
+
 
 <script type="text/javascript">
     document.getElementById("actorsList").onchange = function (e) {

@@ -5,12 +5,6 @@
             $.cookie(dlgName, 'launched', 1, 365);
         };
     },
-    this.injectPopupContainer = function() {
-        if ($("#dialog-box") != undefined) {
-            $("body").append('<div id="dialog-overlay">' +
-                '</div><div id="dialog-box"><div class="dialog-content"><div id="dialog-message"></div><table border="0"><tr><td align="center" width="770px"><div id="buttonFooter"><a href="#" class="button" onmouseup="$(\'#dialog-overlay, #dialog-box\').remove()">Schließen</a></div></td></tr></table></div></div>');
-        }
-    },
     this.popupWelcome = function() {
         this.popup("Templates/welcome.html");
     },
@@ -30,7 +24,7 @@
         this.popup("Templates/friendsDetails.html", m.friends, "#friendsList");
     },
     this.popupMovieDetails = function(movie) {
-        this.popup("Templates/moviesDetails.html", movie, "#dialog-message");
+        this.popup("Templates/movieDetails.html", movie, "#dialog-message");
     },
     this.popupForgotMyPassword = function(ctrlToHide, parent) {
         ctrlToHide.hide();
@@ -134,25 +128,22 @@
         }, false);
     },
     this.popup = function(templateUrl, objTemplate, parentCtrlId, focusCtrlName) {
-        this.injectPopupContainer();
+     
+        $("body").append("<div id='dialog-overlay'></div>");
+        $("body").append("<div id='dialog-box'></div>");
 
-        // get the screen height and width  
         var maskHeight = $(document).height();
         var maskWidth = $(window).width();
 
-        // calculate the values for center alignment
         var dialogTop = 100 //(maskHeight / 2) - ($('#dialog-box').height() / 2);
         var dialogLeft = (maskWidth / 2) - ($('#dialog-box').width() / 2);
 
-        // assign values to the overlay and dialog box
         $('#dialog-overlay').css({ height: maskHeight, width: maskWidth }).show();
         $('#dialog-box').css({ top: dialogTop, left: dialogLeft }).show();
+        
 
-        // display the message
-        //    $('#dialog-message').html(message);
-
-        $("#dialog-message").load(templateUrl, function() {
-            if (parentCtrlId != null) {
+       $("#dialog-box").load(templateUrl, function () {
+                if (parentCtrlId != null) {
                 $("#detailsTemplate").tmpl(objTemplate).appendTo(parentCtrlId);
             }
             if (focusCtrlName != null) {

@@ -1,24 +1,43 @@
 ﻿
-<h1>Willkommen.</h1>
-<h2>Ein kurze Einleitung über Sinn und Zweck des Ganzen.</h2>
+        <div class="dialog-content">
+            <div id="dialog-message">
+                <!-- Template Kram kommt hier rein .... -->
+                <h1>Willkommen.</h1>
+                <h2>Ein kurze Einleitung über Sinn und Zweck des Ganzen.</h2>
+                <h2>
+                    Wir alle mögen Filme. Wir sehen sie uns gerne an und wir verleihen sie auch gern. Leider gehen Filme oft verloren. Ähnlich wie Bücher werden sie verliehen und vergessen, zumindest von dem, der sie geliehen hat.
+                    Diese Seite soll dabei helfen Filme mit ruhigem Gewissen zu verleihen. Dazu wird jeder Film registriet und jede Leihanfrage protokolliert. 
+                </h2>
 
-<h2>
-    Wir alle mögen Filme. Wir sehen sie uns gerne an und wir verleihen sie auch gern. Leider gehen Filme oft verloren. Ähnlich wie Bücher werden sie verliehen und vergessen, zumindest von dem, der sie geliehen hat.
-    Diese Seite soll dabei helfen Filme mit ruhigem Gewissen zu verleihen. Dazu wird jeder Film registriet und jede Leihanfrage protokolliert. 
-</h2>
+                <h2>
+                    Soll ein Film verliehen werden sendet die Webseite ein Anfrage an den Besitzer. Der Besitzer muss dann nur noch den Film übergeben. In regelmäßigen Abständen werden alle Benutzer darüber informiert welche Filme verliehen oder geliehen wurden.
+                </h2>
 
-<h2>
-    Soll ein Film verliehen werden sendet die Webseite ein Anfrage an den Besitzer. Der Besitzer muss dann nur noch den Film übergeben. In regelmäßigen Abständen werden alle Benutzer darüber informiert welche Filme verliehen oder geliehen wurden.
-</h2>
+                <h2>
+                    Man kann auf mehrere Arten nach Filmen suchen. Die einfachste ist die Seite neuzuladen oder den (grauen) Neu Laden Button zu drücken. Jedes neu laden der Seite wählt zufällig 15 neue Title aus und zeigt sie an. Ich stelle mir dabei gerne eine Kiste vor in der ein paar alte Filme liegen. Sher spannend darin zu stöbern ;)
+                </h2>
 
-<h2>
-    Man kann auf mehrere Arten nach Filmen suchen. Die einfachste ist die Seite neuzuladen oder den (grauen) Neu Laden Button zu drücken. Jedes neu laden der Seite wählt zufällig 15 neue Title aus und zeigt sie an. Ich stelle mir dabei gerne eine Kiste vor in der ein paar alte Filme liegen. Sher spannend darin zu stöbern ;)
-</h2>
+                <h2>
+                    Eine andere Möglichkeit ist gezielt nach Genre, Schauspieler, Titel des Films oder nach Filmen von Freunden zu suchen. Jedes dieser Such Möglichkeiten wird durch einen anders farbigen Button dargestellt.
+                </h2>
 
-<h2>
-    Eine andere Möglichkeit ist gezielt nach Genre, Schauspieler, Titel des Films oder nach Filmen von Freunden zu suchen. Jedes dieser Such Möglichkeiten wird durch einen anders farbigen Button dargestellt.
-</h2>
-
-<h2>
-    <input type="checkbox" id="txtDontShowThisAgain" onmouseup="$.cookie('movie-welcome', 'hidden', 365);">Nicht mehr anzeigen</input>
-</h2>
+                <h2>
+                    <input type="checkbox" id="txtDontShowThisAgain" onmouseup="$.cookie('movie-welcome', 'hidden', 365);">Nicht mehr anzeigen</input>
+                </h2>
+                
+            <!-- Template Kram kommt hier ^^ rein .... -->
+            </div>
+            <table border="0">
+                <tr>
+                    <td align="center" width="770px">
+                        
+                        <!-- Buttons kommen hier rein .... -->
+                        <div id="buttonFooter">
+                            <a href="#" class="button" onmouseup="$('#dialog-overlay, #dialog-box').remove()">Schließen</a>
+                        </div>
+                        <!-- Buttons kommen hier ^^ rein .... -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+ 
