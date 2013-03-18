@@ -1,4 +1,4 @@
-﻿var Model = function () {
+﻿var App = function () {
     this.serviceUrl = "http://localhost/MediaManager2010/",
     this.movies = [],
     this.friends = [],
@@ -56,8 +56,7 @@
         $.getJSON(this.serviceUrl + "actors?letter=" + letter, function(data) {
             for (var i = 0; i < data.length; i++) {
                 $('#' + ctrl).append("<option value='" + data[i].ID + "'>" + data[i].Name + "</option>");
-            }
-            ;
+            };
         });
     },
     this.loadMoviesWithLetter = function(letter, ctrl) {
@@ -65,8 +64,7 @@
         $.getJSON(this.serviceUrl + "items?letter=" + letter, function(data) {
             for (var i = 0; i < data.length; i++) {
                 $('#' + ctrl).append("<option value='" + data[i].id + "'>" + data[i].title + "</option>");
-            }
-            ;
+            };
         });
     },
     this.loadGenres = function() {
@@ -254,8 +252,7 @@ function getRandomNumber(start, end) {
     return Math.floor((Math.random() * end) + start);
 }
 
-var m = new Model;
-
+var m = new App;
 
 function Init() {
     dragDropInit();

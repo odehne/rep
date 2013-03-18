@@ -32,14 +32,12 @@ Public Class BLLGenre
     Public Function GetGenreByID(ByVal ID As Integer) As Genre Implements IGenreRepository.GetGenreByID
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
-            Dim source = From r In db.tblGenres _
+            Return (From r In db.tblGenres _
                      Select g = New Genre() With { _
                         .ID = r.ID, _
                         .Name = r.Name, _
                         .Description = r.Description} _
-                     Where (g.ID = ID)
-
-            Return source
+                     Where (g.ID = ID)).FirstOrDefault
         End Using
 
     End Function

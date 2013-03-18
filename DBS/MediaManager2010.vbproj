@@ -175,6 +175,7 @@
     <Compile Include="WCFContracts\MediaTypes.vb" />
     <Compile Include="WCFContracts\MovieItem.vb" />
     <Compile Include="WCFContracts\NotReferencedType.vb" />
+    <Compile Include="WCFContracts\OnlyTitle.vb" />
     <Compile Include="WCFContracts\ParticipantTypes.vb" />
     <Compile Include="WCFContracts\Participent.vb" />
     <Compile Include="WCFContracts\Roles.vb" />

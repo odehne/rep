@@ -1,4 +1,5 @@
 Imports MediaManager2010.WCFContracts.V1
+Imports MediaManager2010.WCFContracts
 
 Public Class BLLItems
     Implements IItemRepository
@@ -699,15 +700,7 @@ Public Class BLLItems
 
     End Function
 
-    Public Class OnlyTitle
-        Public title As String
-        Public id As Integer
-
-        Public Sub New(r As tblItem)
-            id = r.ID
-            title = Tools.CleanupMovieTitle(r.Name)
-        End Sub
-    End Class
+  
 
     Public Function GetTitlesBeginningWith(ByVal letter As String) As List(Of OnlyTitle)
         Dim d As New MediaLibraryLinqDataContext()

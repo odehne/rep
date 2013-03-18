@@ -70,7 +70,7 @@ Namespace WCFContracts.V1
 
 
         <DataMember()> _
-        Public ReadOnly Property Comments As String
+        Public Property Comments As String
             Get
                 Dim sb As New StringBuilder
                 For Each c In Ratings
@@ -84,17 +84,23 @@ Namespace WCFContracts.V1
                 Next
                 Return sb.ToString
             End Get
+            Set(value As String)
+
+            End Set
         End Property
 
         <DataMember()> _
-        Public ReadOnly Property RatingsCount As Integer
+        Public Property RatingsCount As Integer
             Get
                 Return Me.Ratings.Count
             End Get
+            Set(value As Integer)
+
+            End Set
         End Property
 
         <DataMember()> _
-        Public ReadOnly Property AggregatedStars As String
+        Public Property AggregatedStars As String
             Get
                 Dim i As Integer = 0
                 Dim strs As Integer = 0
@@ -117,19 +123,25 @@ Namespace WCFContracts.V1
                 End If
                 Return sb.ToString
             End Get
+            Set(value As String)
+
+            End Set
         End Property
 
         <DataMember()> _
         Public Trailer As String
 
         <DataMember()> _
-        Public ReadOnly Property RatingUsername As String
+        Public Property RatingUsername As String
             Get
                 If Not Ratings Is Nothing AndAlso Ratings.Count > 0 Then
                     Return Ratings(0).UserName
                 End If
                 Return String.Empty
             End Get
+            Set(value As String)
+
+            End Set
         End Property
 
 
