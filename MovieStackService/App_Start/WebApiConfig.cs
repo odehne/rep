@@ -9,6 +9,8 @@ namespace MovieStackService
     {
         public static void Register(HttpConfiguration config)
         {
+            config.DependencyResolver = new DefaultDependencyResolver();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

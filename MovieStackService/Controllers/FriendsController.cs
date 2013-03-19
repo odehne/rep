@@ -5,38 +5,42 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MediaManager2010;
+using MediaManager2010.BLL.Interfaces;
 using MediaManager2010.WCFContracts.V1;
 
 namespace MovieStackService.Controllers
 {
     public class FriendsController : ApiController
     {
+        private IFriendsRepository Repository { get; set; }
+
+        public FriendsController(IFriendsRepository repository)
+        {
+            Repository = repository;
+        }
+
         // GET api/friends
         public IEnumerable<User> Get()
         {
-            var bll = new BLLFriends();
-            return bll.GetData();
+            return Repository.GetData();
         }
 
         // GET api/friends/5
         public User Get(int id)
         {
-            var bll = new BLLFriends();
-            return bll.GetUserByID(id);
+            return Repository.GetUserByID(id);
         }
 
         // GET api/friends/5
         public User GetUserByName(string name)
         {
-            var bll = new BLLFriends();
-            return bll.GetUserByName(name);
+            return Repository.GetUserByName(name);
         }
 
         // POST api/friends
         public HttpResponseMessage Post(NewUserModel newUser)
         {
-            var bll = new BLLFriends();
-            var newId = bll.AddUser(new User() { Email = newUser.Email, Username = newUser.Username , Password = newUser.Password });
+            var newId = Repository.AddUser(new User() { Email = newUser.Email, Username = newUser.Username, Password = newUser.Password });
             return newId <= 0 ? new HttpResponseMessage(HttpStatusCode.BadRequest) : new HttpResponseMessage(HttpStatusCode.OK);
         }
 

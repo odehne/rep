@@ -1,12 +1,13 @@
+Imports MediaManager2010.BLL.Interfaces
 Imports MediaManager2010.WCFContracts.V1
 Imports MediaManager2010.WCFContracts
 
 Public Class BLLItems
-    Implements IItemRepository
+    Implements IItemsRepository
 
     Private _movieIds As Integer()
 
-    Public ReadOnly Property MovieIds() As Integer()
+    Public ReadOnly Property MovieIds() As Integer() Implements IItemsRepository.MovieIds
         Get
             If _movieIds Is Nothing Then
                 Using db As MediaLibraryLinqDataContext = CreateDataContext()
@@ -18,12 +19,12 @@ Public Class BLLItems
         End Get
     End Property
 
-    Public Function SearchByTitle(ByVal Title As String) As List(Of MovieItem)
+    Public Function SearchByTitle(ByVal Title As String) As List(Of MovieItem) Implements IItemsRepository.SearchByTitle
         Return GetItemsLikeName(Title)
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemByName(ByVal Name As String) As MovieItem
+    Public Function GetItemByName(ByVal Name As String) As MovieItem Implements IItemsRepository.GetItemByName
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
@@ -40,7 +41,7 @@ Public Class BLLItems
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemsByName(ByVal Name As String) As List(Of MovieItem)
+    Public Function GetItemsByName(ByVal Name As String) As List(Of MovieItem) Implements IItemsRepository.GetItemsByName
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
 
             Dim source = From r In db.tblItems _
@@ -52,7 +53,7 @@ Public Class BLLItems
 
     End Function
 
-    Public Function GetItemsLikeName(ByVal name As String) As List(Of MovieItem)
+    Public Function GetItemsLikeName(ByVal name As String) As List(Of MovieItem) Implements IItemsRepository.GetItemsLikeName
 
         If Not name.StartsWith("*") Then name = "*" + name
         If Not name.EndsWith("*") Then name &= "*"
@@ -68,7 +69,7 @@ Public Class BLLItems
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemsByOwnerID(ByVal OwnerID As Integer) As List(Of MovieItem)
+    Public Function GetItemsByOwnerID(ByVal OwnerID As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByOwnerID
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
@@ -81,7 +82,7 @@ Public Class BLLItems
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemsByGenreID(ByVal GenreID As Integer) As List(Of MovieItem)
+    Public Function GetItemsByGenreID(ByVal GenreID As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByGenreID
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
@@ -94,7 +95,7 @@ Public Class BLLItems
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemsByActorID(ByVal ActorID As Integer) As List(Of MovieItem)
+    Public Function GetItemsByActorID(ByVal ActorID As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByActorID
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
@@ -109,7 +110,7 @@ Public Class BLLItems
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemsByDirectorID(ByVal DirectorID As Integer) As List(Of MovieItem)
+    Public Function GetItemsByDirectorID(ByVal DirectorID As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByDirectorID
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
@@ -123,7 +124,7 @@ Public Class BLLItems
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetItemsByMediaType(ByVal MediaTypeID As Integer) As List(Of MovieItem)
+    Public Function GetItemsByMediaType(ByVal MediaTypeID As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByMediaType
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
@@ -140,11 +141,11 @@ Public Class BLLItems
     ''' <exception cref="ArgumentException"></exception>
     ''' <param name="Item"></param>
     ''' <remarks></remarks>
-    Public Function UpdateItem(ByVal Item As MovieItem) As MovieItem Implements IItemRepository.UpdateItem
+    Public Function UpdateItem(ByVal Item As MovieItem) As MovieItem Implements IItemsRepository.UpdateItem
         Dim mBLL As BLLMediaType = New BLLMediaType
         Dim gBLL As BLLGenre = New BLLGenre
         Dim fBLL As BLLMediaFormat = New BLLMediaFormat
-        Dim pBLL As BLLParticipants = New BLLParticipants
+        Dim p As BLLParticipants = New BLLParticipants
         Dim ptBLL As BLLParticipantType = New BLLParticipantType
         Dim uBLL As BLLFriends = New BLLFriends
         Dim IsNew As Boolean = False
@@ -158,10 +159,10 @@ Public Class BLLItems
 
             If String.IsNullOrEmpty(Item.GenreName) Then Item.GenreName = "unclassified"
 
-            Item.Actor1ID = pBLL.AddParticipant(Item.Actor1Name, ActorTypeID)
-            Item.Actor2ID = pBLL.AddParticipant(Item.Actor2Name, ActorTypeID)
-            Item.Actor3ID = pBLL.AddParticipant(Item.Actor3Name, ActorTypeID)
-            Item.DirectorID = pBLL.AddParticipant(Item.DirectorName, DirectorTypeID)
+            Item.Actor1ID = p.AddParticipant(Item.Actor1Name, ActorTypeID)
+            Item.Actor2ID = p.AddParticipant(Item.Actor2Name, ActorTypeID)
+            Item.Actor3ID = p.AddParticipant(Item.Actor3Name, ActorTypeID)
+            Item.DirectorID = p.AddParticipant(Item.DirectorName, DirectorTypeID)
             Item.GenreID = gBLL.AddGenre(Item.GenreName)
             Item.MediaFormatID = fBLL.AddMediaFormat(Item.MediaFormatName)
             Item.MediaTypeID = mBLL.AddMediaType(Item.MediaFormatName)
@@ -325,7 +326,7 @@ Public Class BLLItems
 
     End Function
 
-    Public Function ReturnBorrowedMovie(ByVal ID As Integer) As String
+    Public Function ReturnBorrowedMovie(ByVal ID As Integer) As String Implements IItemsRepository.ReturnBorrowedMovie
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
 
@@ -353,7 +354,7 @@ Public Class BLLItems
     End Function
 
 
-    Public Function UpdateBorrow(ByVal ID As Integer, Optional ByVal BorrowedByID As Integer = 0, Optional ByVal BorrowedSince As Date = #1/1/1990#, Optional sendEmail As Boolean = True) As String
+    Public Function UpdateBorrow(ByVal ID As Integer, Optional ByVal BorrowedByID As Integer = 0, Optional ByVal BorrowedSince As Date = #1/1/1990#, Optional sendEmail As Boolean = True) As String Implements IItemsRepository.UpdateBorrow
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
 
@@ -392,9 +393,9 @@ Public Class BLLItems
 
         Return "OK"
 
-      End Function
+    End Function
 
-    Public Function GetItems() As System.Collections.Generic.List(Of MovieItem) Implements MediaManager2010.IItemRepository.GetItems
+    Public Function GetItems() As System.Collections.Generic.List(Of MovieItem) Implements IItemsRepository.GetItems
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
 
             Dim source = (From r In db.tblItems Select r)
@@ -404,7 +405,7 @@ Public Class BLLItems
         End Using
     End Function
 
-    Public Function PickRandomMovies() As List(Of MovieItem)
+    Public Function PickRandomMovies() As List(Of MovieItem) Implements IItemsRepository.PickRandomMovies
         Dim lst = New List(Of MovieItem)
         Dim r As New System.Random()
         Dim i As Integer = 1
@@ -425,7 +426,7 @@ Public Class BLLItems
     End Function
 
 
-    Public Function GetTblItemByID(ByVal ID As Integer) As tblItem
+    Public Function GetTblItemByID(ByVal ID As Integer) As tblItem Implements IItemsRepository.GetTblItemByID
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
                  Select r Where (r.ID = ID)
@@ -438,7 +439,7 @@ Public Class BLLItems
         Return Nothing
     End Function
 
-    Public Function GetItemByEAN(ByVal EAN As String) As List(Of WCFContracts.V1.MovieItem)
+    Public Function GetItemByEAN(ByVal EAN As String) As List(Of WCFContracts.V1.MovieItem) Implements IItemsRepository.GetItemByEAN
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
                  Select r Where (r.EAN = EAN)
@@ -449,7 +450,7 @@ Public Class BLLItems
 
     End Function
 
-    Public Function GetItemByID(ByVal ID As Integer) As WCFContracts.V1.MovieItem Implements MediaManager2010.IItemRepository.GetItemByID
+    Public Function GetItemByID(ByVal ID As Integer) As WCFContracts.V1.MovieItem Implements IItemsRepository.GetItemByID
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
                  Select r Where (r.ID = ID)
@@ -473,7 +474,7 @@ Public Class BLLItems
     ''' <param name="ID"></param>
     ''' <exception cref="ArgumentException"></exception>
     ''' <remarks></remarks>
-    Public Sub DeleteItem(ByVal ID As Integer) Implements MediaManager2010.IItemRepository.DeleteItem
+    Public Sub DeleteItem(ByVal ID As Integer) Implements IItemsRepository.DeleteItem
 
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From itm In db.tblItems Where itm.ID = ID
@@ -487,19 +488,19 @@ Public Class BLLItems
         End Using
     End Sub
 
-    Public Function GetItemByNameAndOwnerID(ByVal Name As String, ByVal OwnerID As Integer) As Object Implements MediaManager2010.IItemRepository.GetItemByNameAndOwnerID
+    Public Function GetItemByNameAndOwnerID(ByVal Name As String, ByVal OwnerID As Integer) As MovieItem Implements IItemsRepository.GetItemByNameAndOwnerID
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
                          Where (r.OwnerID = OwnerID And r.Name = Name)
             If source.Count > 0 Then
-                Return source.First
+                Return ConvertToMovieItem(source.First)
             Else
                 Return Nothing
             End If
         End Using
     End Function
 
-    Public Function GetItemsByMediaFormat(ByVal MediaFormatID As Integer) As System.Collections.Generic.List(Of WCFContracts.V1.MovieItem) Implements MediaManager2010.IItemRepository.GetItemsByMediaFormat
+    Public Function GetItemsByMediaFormat(ByVal MediaFormatID As Integer) As System.Collections.Generic.List(Of WCFContracts.V1.MovieItem) Implements IItemsRepository.GetItemsByMediaFormat
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
 
             Dim source = From r In db.tblItems _
@@ -700,9 +701,9 @@ Public Class BLLItems
 
     End Function
 
-  
 
-    Public Function GetTitlesBeginningWith(ByVal letter As String) As List(Of OnlyTitle)
+
+    Public Function GetTitlesBeginningWith(ByVal letter As String) As List(Of OnlyTitle) Implements IItemsRepository.GetTitlesBeginningWith
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblItems Order By r.Name Where r.Name.StartsWith(letter) Select co = New OnlyTitle(r)
@@ -710,7 +711,7 @@ Public Class BLLItems
         Return source.ToList
     End Function
 
-    Public Function GetLatestAdded() As List(Of MovieItem)
+    Public Function GetLatestAdded() As List(Of MovieItem) Implements IItemsRepository.GetLatestAdded
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim d As DateTime = Now.AddDays(-20)
 
@@ -725,7 +726,7 @@ Public Class BLLItems
         End Using
     End Function
 
-    Public Function GetItemsByBorrowerID(ByVal borrowedById As Integer) As List(Of MovieItem)
+    Public Function GetItemsByBorrowerID(ByVal borrowedById As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByBorrowerID
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
                     Select r Where r.BorrowedByID = borrowedById
@@ -736,7 +737,7 @@ Public Class BLLItems
         End Using
 
     End Function
-    Public Function GetItemsByLenderByID(ByVal lenderId As Integer) As List(Of MovieItem)
+    Public Function GetItemsByLenderByID(ByVal lenderId As Integer) As List(Of MovieItem) Implements IItemsRepository.GetItemsByLenderByID
         Using db As MediaLibraryLinqDataContext = CreateDataContext()
             Dim source = From r In db.tblItems _
                     Select r Where r.OwnerID = lenderId And r.BorrowedByID > 0
@@ -748,4 +749,6 @@ Public Class BLLItems
         End Using
 
     End Function
+
+
 End Class

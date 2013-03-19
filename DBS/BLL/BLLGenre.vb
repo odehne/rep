@@ -1,3 +1,4 @@
+Imports MediaManager2010.BLL.Interfaces
 Imports MediaManager2010.WCFContracts.V1
 
 Public Class BLLGenre

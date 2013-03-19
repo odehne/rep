@@ -5,42 +5,50 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using MediaManager2010;
+using MediaManager2010.BLL.Interfaces;
 using MediaManager2010.WCFContracts.V1;
 
 namespace MovieStackService.Controllers
 {
     public class GenreController : ApiController
     {
+
+        private IGenreRepository Repository { get; set; }
+
+        public GenreController(IGenreRepository repository)
+        {
+            Repository = repository;
+        }
+
         // GET api/genre
         public IEnumerable<Genre> Get()
         {
-            var bll = new BLLGenre();
-            return bll.GetGenres();
+            return Repository.GetGenres();
         }
 
         // GET api/genre/5
         public Genre Get(int id)
         {
-            var bll = new BLLGenre();
-            return bll.GetGenreByID(id);
+            return Repository.GetGenreByID(id);
         }
 
         // POST api/genre
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            throw new NotImplementedException();
+            var id = Repository.AddGenre(value);
+            return id > 0 ? new HttpResponseMessage(HttpStatusCode.OK) : new HttpResponseMessage(HttpStatusCode.NotAcceptable);
         }
 
         // PUT api/genre/5
         public void Put(int id, [FromBody]string value)
         {
-            throw new NotImplementedException();
+            Repository.UpdateGenre(id, value);
         }
 
         // DELETE api/genre/5
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Repository.DeleteGenre(id);
         }
     }
 }

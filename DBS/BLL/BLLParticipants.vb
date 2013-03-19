@@ -1,10 +1,12 @@
 
+Imports MediaManager2010.BLL.Interfaces
 Imports MediaManager2010.WCFContracts.V1
 
 Public Class BLLParticipants
+    Implements IParticipantsRepository
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-    Public Function GetData() As List(Of Participant)
+    Public Function GetData() As List(Of Participant) Implements IParticipantsRepository.GetData
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblParticipants _
@@ -18,7 +20,7 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-  Public Function GetParticipantsLikeName(ByVal Name As String) As List(Of Participant)
+    Public Function GetParticipantsLikeName(ByVal Name As String) As List(Of Participant) Implements IParticipantsRepository.GetParticipantsLikeName
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblParticipants _
@@ -34,7 +36,7 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-    Public Function GetParticipantsLikeNameAndPTypeID(ByVal Name As String, ByVal ID As Integer) As List(Of Participant)
+    Public Function GetParticipantsLikeNameAndPTypeID(ByVal Name As String, ByVal ID As Integer) As List(Of Participant) Implements IParticipantsRepository.GetParticipantsLikeNameAndPTypeID
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblParticipants _
@@ -49,7 +51,7 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-    Public Function GetParticipantsBeginningWith(ByVal letter As String) As List(Of Participant)
+    Public Function GetParticipantsBeginningWith(ByVal letter As String) As List(Of Participant) Implements IParticipantsRepository.GetParticipantsBeginningWith
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblParticipants Order By r.Name _
@@ -65,7 +67,7 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-    Public Function GetParticipantsByTypeID(ByVal TypeID As Integer) As List(Of Participant)
+    Public Function GetParticipantsByTypeID(ByVal TypeID As Integer) As List(Of Participant) Implements IParticipantsRepository.GetParticipantsByTypeID
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblParticipants _
@@ -81,7 +83,7 @@ Public Class BLLParticipants
 
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-   Public Function GetParticipantByID(ByVal ID As Integer) As Participant
+    Public Function GetParticipantByID(ByVal ID As Integer) As Participant Implements IParticipantsRepository.GetParticipantByID
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblParticipants _
@@ -99,7 +101,7 @@ Public Class BLLParticipants
 
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetParticipantByName(ByVal Name As String) As Participant
+    Public Function GetParticipantByName(ByVal Name As String) As Participant Implements IParticipantsRepository.GetParticipantByName
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = (From r In d.tblParticipants _
@@ -119,9 +121,9 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, False)> _
-       Public Function AddParticipant(ByVal Name As String, _
+    Public Function AddParticipant(ByVal Name As String, _
                                       ByVal ParticipantTypeID As String, _
-                                      Optional ByVal Description As String = "") As Integer
+                                      Optional ByVal Description As String = "") As Integer Implements IParticipantsRepository.AddParticipant
 
         If Not String.IsNullOrEmpty(Name) Then
             Dim c As New MediaLibraryLinqDataContext()
@@ -145,10 +147,10 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, False)> _
-      Public Function UpdateParticipant(ByVal ID As Integer, _
+    Public Function UpdateParticipant(ByVal ID As Integer, _
                                         ByVal Name As String, _
                                         ByVal ParticipantTypeID As String, _
-                                        Optional ByVal Description As String = "") As Integer
+                                        Optional ByVal Description As String = "") As Integer Implements IParticipantsRepository.UpdateParticipant
         Dim pm As New tblParticipant
         Dim FormatConext As New MediaLibraryLinqDataContext()
 
@@ -176,7 +178,7 @@ Public Class BLLParticipants
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, False)> _
-       Public Function DeleteParticipant(ByVal ID As Integer) As String
+    Public Function DeleteParticipant(ByVal ID As Integer) As String Implements IParticipantsRepository.DeleteParticipant
 
         Throw New NotImplementedException
         'Dim rowsAffected As Integer = 0

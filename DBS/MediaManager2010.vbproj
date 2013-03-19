@@ -130,14 +130,16 @@
     <Compile Include="BLL\BLLRatings.vb" />
     <Compile Include="BLL\BLLRoles.vb" />
     <Compile Include="BLL\BLLSettings.vb" />
-    <Compile Include="BLL\Controllers\GenreController.vb" />
     <Compile Include="BLL\BLLGenre.vb" />
     <Compile Include="BLL\BLLItems.vb" />
     <Compile Include="BLL\BLLMediaFormat.vb" />
     <Compile Include="BLL\BLLMediaType.vb" />
+    <Compile Include="BLL\Interfaces\IItemsRepository.vb" />
     <Compile Include="BLL\BLLParticipants.vb" />
     <Compile Include="BLL\BLLParticipantType.vb" />
     <Compile Include="BLL\BLLImages.vb" />
+    <Compile Include="BLL\Interfaces\IParticipantsRepository.vb" />
+    <Compile Include="BLL\Interfaces\IFriendsRepository.vb" />
     <Compile Include="DAL\MediaLibraryLinq.designer.vb">
       <DependentUpon>MediaLibraryLinq.dbml</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -149,8 +151,6 @@
     <Compile Include="PasswordReset.vb" />
     <Compile Include="Tools\EmailSender.vb" />
     <Compile Include="BLL\Interfaces\IGenreRepository.vb" />
-    <Compile Include="BLL\Interfaces\IItemRepository.vb" />
-    <Compile Include="BLL\Controllers\ItemsController.vb" />
     <Compile Include="MovieImageHandler.vb" />
     <Compile Include="Tools\Tools.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

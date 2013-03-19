@@ -1,10 +1,12 @@
+Imports MediaManager2010.BLL.Interfaces
 Imports Microsoft.VisualBasic
 Imports MediaManager2010.WCFContracts.V1
 
 Public Class BLLFriends
+    Implements IFriendsRepository
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-    Public Function GetData() As List(Of User)
+    Public Function GetData() As List(Of User) Implements IFriendsRepository.GetData
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblUsers _
@@ -29,7 +31,7 @@ Public Class BLLFriends
         End If
     End Function
 
-    Private Function ConvertToServiceUser(ByVal dbuser As tblUser) As User
+    Public Function ConvertToServiceUser(ByVal dbuser As tblUser) As User Implements IFriendsRepository.ConvertToServiceUser
         Dim serviceuser As New User
 
         With serviceuser
@@ -51,7 +53,7 @@ Public Class BLLFriends
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, True)> _
-    Public Function GetUsersLikeName(ByVal Username As String) As List(Of User)
+    Public Function GetUsersLikeName(ByVal Username As String) As List(Of User) Implements IFriendsRepository.GetUsersLikeName
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblUsers _
@@ -74,7 +76,7 @@ Public Class BLLFriends
 
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-   Public Function GetUserByID(ByVal ID As Integer) As User
+    Public Function GetUserByID(ByVal ID As Integer) As User Implements IFriendsRepository.GetUserByID
         Dim u As tblUser = GetTblUserByID(ID)
 
         If Not u Is Nothing Then
@@ -85,7 +87,7 @@ Public Class BLLFriends
 
     End Function
 
-    Public Function GetTblUserByID(ByVal ID As Integer) As tblUser
+    Public Function GetTblUserByID(ByVal ID As Integer) As tblUser Implements IFriendsRepository.GetTblUserByID
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblUsers _
@@ -99,7 +101,7 @@ Public Class BLLFriends
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetUserByName(ByVal Username As String) As User
+    Public Function GetUserByName(ByVal Username As String) As User Implements IFriendsRepository.GetUserByName
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim source = From r In d.tblUsers _
@@ -113,14 +115,14 @@ Public Class BLLFriends
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetUserByOwnerName(ByVal Username As String) As User
+    Public Function GetUserByOwnerName(ByVal Username As String) As User Implements IFriendsRepository.GetUserByOwnerName
 
         Return GetUserByName(Username)
 
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetUserByEmail(ByVal Email As String) As User
+    Public Function GetUserByEmail(ByVal Email As String) As User Implements IFriendsRepository.GetUserByEmail
         Dim d As New MediaLibraryLinqDataContext()
 
         Dim user = (From r In d.tblUsers _
@@ -135,7 +137,7 @@ Public Class BLLFriends
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, False)> _
-       Public Function AddUser(ByVal U As User) As Long
+    Public Function AddUser(ByVal U As User) As Long Implements IFriendsRepository.AddUser
         Dim m As New tblUser
         Dim c As New MediaLibraryLinqDataContext()
 
@@ -166,10 +168,10 @@ Public Class BLLFriends
             .LastActivityDate = Now
             .LastLockedOutDate = Now
             .LastLoginDate = Now
-            .LastPasswordChangedDate = now
+            .LastPasswordChangedDate = Now
         End With
-     
-        
+
+
         c.tblUsers.InsertOnSubmit(m)
 
         Dim i As Integer = c.GetChangeSet().Inserts.Count
@@ -181,7 +183,7 @@ Public Class BLLFriends
 
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, False)> _
-    Public Function UpdateUser(ByVal u As User) As Integer
+    Public Function UpdateUser(ByVal u As User) As Integer Implements IFriendsRepository.UpdateUser
 
         Dim UserContext As New MediaLibraryLinqDataContext()
 
@@ -210,7 +212,7 @@ Public Class BLLFriends
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, False)> _
-    Public Function UpdatePassword(ByVal ID As Integer, ByVal Password As String) As Integer
+    Public Function UpdatePassword(ByVal ID As Integer, ByVal Password As String) As Integer Implements IFriendsRepository.UpdatePassword
 
         Dim UserContext As New MediaLibraryLinqDataContext()
 
@@ -228,7 +230,7 @@ Public Class BLLFriends
     End Function
 
     <System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, False)> _
-       Public Function DeleteUser(ByVal ID As Integer) As Integer
+    Public Function DeleteUser(ByVal ID As Integer) As Integer Implements IFriendsRepository.DeleteUser
         Dim UserContext As New MediaLibraryLinqDataContext()
 
         Dim User = (From us In UserContext.tblUsers _
@@ -246,7 +248,7 @@ Public Class BLLFriends
         Return i
     End Function
 
-    Public Function GetUserByNameAndPassowrd(name As String, password As String) As UserOnly
+    Public Function GetUserByNameAndPassowrd(name As String, password As String) As UserOnly Implements IFriendsRepository.GetUserByNameAndPassowrd
         Dim UserContext As New MediaLibraryLinqDataContext()
 
         Dim User = (From us In UserContext.tblUsers _
@@ -260,7 +262,7 @@ Public Class BLLFriends
         Return Nothing
     End Function
 
-    Public Function ValidPasswordRequest(g As String) As Boolean
+    Public Function ValidPasswordRequest(g As String) As Boolean Implements IFriendsRepository.ValidPasswordRequest
 
         Using ctx As New MediaLibraryLinqDataContext()
 
@@ -281,7 +283,7 @@ Public Class BLLFriends
 
     End Function
 
-    Public Sub SetPasswordResetRequest(ByVal id As Integer)
+    Public Sub SetPasswordResetRequest(ByVal id As Integer) Implements IFriendsRepository.SetPasswordResetRequest
 
         Using ctx As New MediaLibraryLinqDataContext()
 
@@ -305,7 +307,7 @@ Public Class BLLFriends
 
     End Sub
 
-    Public Sub ResetPassword(ByVal tempKey As String, ByVal newPassword As String)
+    Public Sub ResetPassword(ByVal tempKey As String, ByVal newPassword As String) Implements IFriendsRepository.ResetPassword
 
         Using ctx As New MediaLibraryLinqDataContext()
 
